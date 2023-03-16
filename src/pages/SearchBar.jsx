@@ -1,6 +1,6 @@
 import Search from "../components/Search";
 
-function SearchPage() {
+function SearchBar() {
   return (
     <div style={{ textAlign: "center", marginTop: 50 }}>
       <Search />
@@ -8,4 +8,4 @@ function SearchPage() {
   );
 }
 
-export default SearchPage;
+export default SearchBar;

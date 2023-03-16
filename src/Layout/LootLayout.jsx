@@ -1,11 +1,11 @@
 import { Outlet } from "react-router-dom";
 import MainNavigation from "../components/MainNavigation";
-import SearchPage from "../pages/SearchPage";
+import SearchBar from "../pages/SearchBar";
 import style from "./LootLayout.module.css";
 function LootLayout() {
   return (
     <>
-      <SearchPage />
+      <SearchBar />
       <MainNavigation />
       <main className={style.mainNavigat}>
         <Outlet />

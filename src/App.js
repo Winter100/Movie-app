@@ -12,6 +12,9 @@ import MovieDetailPage, {
 } from "./pages/MovieDeatailPage";
 import FilmsPage, { loader as genresLoader } from "./pages/FilmsPage";
 import TopRatedPage, { loader as topRatedLoader } from "./pages/TopRatedPage";
+import SearchResultsPage, {
+  loader as searchLoader,
+} from "./pages/SearchResultsPage";
 
 function App() {
   const router = createBrowserRouter([
@@ -42,6 +45,11 @@ function App() {
           path: "/movies/detail/:id",
           element: <MovieDetailPage />,
           loader: movieDetailLoader,
+        },
+        {
+          path: "/resultes",
+          element: <SearchResultsPage />,
+          loader: searchLoader,
         },
       ],
     },
