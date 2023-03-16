@@ -1,0 +1,23 @@
+.videoPlayerDiv {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(20, 20, 20, 0.96);
+  width: 100%;
+  height: 100vh;
+}
+
+.videoPlayer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.videoP {
+  font-size: 1.8rem;
+  color: white;
+  font-weight: 600;
+}
