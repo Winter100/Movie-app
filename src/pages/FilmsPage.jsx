@@ -1,12 +1,11 @@
-import { json, useLoaderData, useSearchParams } from "react-router-dom";
 import MovieItem from "../components/MovieItem";
+
+import { json, useLoaderData, useSearchParams } from "react-router-dom";
 import { API } from "../util/api";
-
-import Pagination from "react-js-pagination";
-import "./Paging.css";
 import { useEffect, useState } from "react";
+import Pagination from "react-js-pagination";
 
-function Movies() {
+function FilmsPage() {
   const [searchParams, setSearchParams] = useSearchParams();
   const paramsPage = Number(searchParams.get("page"));
   const Movies = useLoaderData();
@@ -30,7 +29,7 @@ function Movies() {
       <Pagination
         activePage={page}
         itemsCountPerPage={20}
-        totalItemsCount={10000}
+        totalItemsCount={Movies.total_results}
         pageRangeDisplayed={5}
         prevPageText={"‹"}
         nextPageText={"›"}
@@ -40,19 +39,19 @@ function Movies() {
   );
 }
 
-export default Movies;
+export default FilmsPage;
 
 export async function loader({ request }) {
   const searchParams = new URL(request.url).searchParams;
   const page = searchParams.get("page");
 
-  const popularUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${API}&language=ko-KR&page=${page}`;
+  const FilmstUrl = `https://api.themoviedb.org/3/movie/now_playing?api_key=${API}&language=ko-KR&page=${page}&region=KR`;
 
-  const response = await fetch(popularUrl);
+  const response = await fetch(FilmstUrl);
 
   if (!response.ok) {
     throw json(
-      { message: "서버와 통신중 오류가 발생했습니다" },
+      { message: "서버와 통신중 에러가 발생했습니다" },
       { status: 500 }
     );
   }

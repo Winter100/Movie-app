@@ -8,7 +8,7 @@ import Pagination from "react-js-pagination";
 function TopRatedPage() {
   const [searchParams, setSearchParams] = useSearchParams();
   const paramsPage = Number(searchParams.get("page"));
-  const topRatedMovies = useLoaderData();
+  const Movies = useLoaderData();
   const [page, setPage] = useState(paramsPage);
 
   useEffect(() => {
@@ -25,10 +25,11 @@ function TopRatedPage() {
 
   return (
     <>
-      <MovieItem item={topRatedMovies.results} />
+      <MovieItem item={Movies.results} />
       <Pagination
         activePage={page}
-        totalItemsCount={1000}
+        itemsCountPerPage={20}
+        totalItemsCount={10000}
         pageRangeDisplayed={5}
         prevPageText={"‹"}
         nextPageText={"›"}
@@ -56,7 +57,6 @@ export async function loader({ request }) {
   }
 
   const data = await response.json();
-  console.log("GenresUrl", data);
 
   return data;
 }

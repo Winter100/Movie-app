@@ -10,7 +10,7 @@ import ErrorPage from "./pages/ErrorPage";
 import MovieDetailPage, {
   loader as movieDetailLoader,
 } from "./pages/MovieDeatailPage";
-import GenresPage, { loader as genresLoader } from "./pages/GenresPage";
+import FilmsPage, { loader as genresLoader } from "./pages/FilmsPage";
 import TopRatedPage, { loader as topRatedLoader } from "./pages/TopRatedPage";
 
 function App() {
@@ -27,8 +27,8 @@ function App() {
           children: [
             { index: true, element: <Movies />, loader: popularMoviesLoader },
             {
-              path: "genres",
-              element: <GenresPage />,
+              path: "films",
+              element: <FilmsPage />,
               loader: genresLoader,
             },
             {

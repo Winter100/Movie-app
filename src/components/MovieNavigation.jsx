@@ -15,10 +15,10 @@ function MovieNavigation() {
         </li>
         <li className={style.mainNavLi}>
           <NavLink
-            to={"/movies/genres?page=1"}
+            to={"/movies/films?page=1"}
             className={({ isActive }) => (isActive ? style.active : "")}
           >
-            장르
+            상영작
           </NavLink>
         </li>
         <li className={style.mainNavLi}>
