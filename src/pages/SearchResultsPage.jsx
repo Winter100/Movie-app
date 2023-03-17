@@ -1,10 +1,10 @@
 import { json, useLoaderData } from "react-router-dom";
-import SearchResult from "../components/SearchResult";
+import SearchResultList from "../components/SearchResultList";
 import { API } from "../util/api";
 function SearchResultsPage() {
   const data = useLoaderData();
 
-  return <SearchResult data={data.results} />;
+  return <SearchResultList data={data.results} />;
 }
 
 export default SearchResultsPage;
