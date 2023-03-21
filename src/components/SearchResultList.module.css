@@ -1,24 +1,49 @@
 .resultListBorder {
   margin: auto;
-  border: 1px solid red;
-  width: 90%;
-  height: 70%;
+  width: 80%;
   background-color: whitesmoke;
 }
 
 .resultListHeader {
   text-align: center;
-  border-bottom: 1px solid black;
 }
-
+.resultListH {
+  margin: 0px;
+  padding-top: 10px;
+}
 .resultListInDiv {
-  margin: 0;
+  text-align: center;
+
   display: grid;
-  background-color: azure;
-  grid-template-columns: 1fr 2fr 2fr;
-  grid-template-rows: repeat(1, minmax(200px, auto));
+  background-color: rgb(220, 220, 220);
+  grid-template-columns: repeat(auto-fit, minmax(20%, auto));
+  grid-auto-rows: minmax(auto);
+
+  gap: 10px;
 }
 
 .resultListLi {
-  border: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+.resultImg {
+  margin: auto;
+}
+
+.resultListD {
+  display: grid;
+  grid-template-rows: 1fr 3fr;
+}
+
+.resultTitle {
+  margin: 0;
+  text-align: center;
+  align-self: center;
+}
+
+.resultListP {
+  margin: 0;
+  font-size: 0.8rem;
+  align-self: center;
+  line-height: 200%;
 }

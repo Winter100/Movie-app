@@ -7,9 +7,11 @@ import Pagination from "react-js-pagination";
 
 function FilmsPage() {
   const [searchParams, setSearchParams] = useSearchParams();
+
   const paramsPage = Number(searchParams.get("page"));
-  const Movies = useLoaderData();
   const [page, setPage] = useState(paramsPage);
+
+  const data = useLoaderData();
 
   useEffect(() => {
     setPage(paramsPage);
@@ -25,11 +27,11 @@ function FilmsPage() {
 
   return (
     <>
-      <MovieItem item={Movies.results} />
+      <MovieItem item={data.results} message={"개봉일"} />
       <Pagination
         activePage={page}
         itemsCountPerPage={20}
-        totalItemsCount={Movies.total_results}
+        totalItemsCount={data.total_results}
         pageRangeDisplayed={5}
         prevPageText={"‹"}
         nextPageText={"›"}
@@ -45,7 +47,10 @@ export async function loader({ request }) {
   const searchParams = new URL(request.url).searchParams;
   const page = searchParams.get("page");
 
-  const FilmstUrl = `https://api.themoviedb.org/3/movie/now_playing?api_key=${API}&language=ko-KR&page=${page}&region=KR`;
+  // const FilmstUrl = `https://api.themoviedb.org/3/movie/now_playing?api_key=${API}&language=ko-KR&page=${page}&region=KR`;
+  const FilmstUrl = `https://api.themoviedb.org/3/movie/upcoming?api_key=${API}&language=ko-KR&page=${page}&region=KR`;
+
+  // await new Promise((resolve) => setTimeout(resolve, 2000)); // 2초 대기
 
   const response = await fetch(FilmstUrl);
 
@@ -54,9 +59,8 @@ export async function loader({ request }) {
       { message: "서버와 통신중 에러가 발생했습니다" },
       { status: 500 }
     );
+  } else {
+    const data = await response.json();
+    return data;
   }
-
-  const data = await response.json();
-
-  return data;
 }

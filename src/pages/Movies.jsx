@@ -9,24 +9,21 @@ import { useEffect, useState } from "react";
 function Movies() {
   const [searchParams, setSearchParams] = useSearchParams();
   const paramsPage = Number(searchParams.get("page"));
-  const Movies = useLoaderData();
+  const movies = useLoaderData();
   const [page, setPage] = useState(paramsPage);
 
   useEffect(() => {
     setPage(paramsPage);
   }, [paramsPage, page]);
 
-  // const navigate = useNavigate();
-
   const handlePageChange = (page) => {
-    // navigate(`/movies?page=${page}`);
     setSearchParams(`page=${page}`);
     setPage(page);
   };
 
   return (
     <>
-      <MovieItem item={Movies.results} />
+      <MovieItem item={movies.results} />
       <Pagination
         activePage={page}
         itemsCountPerPage={20}
@@ -48,6 +45,8 @@ export async function loader({ request }) {
 
   const popularUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${API}&language=ko-KR&page=${page}`;
 
+  // await new Promise((resolve) => setTimeout(resolve, 2000)); // 2초 대기
+
   const response = await fetch(popularUrl);
 
   if (!response.ok) {
@@ -55,9 +54,8 @@ export async function loader({ request }) {
       { message: "서버와 통신중 오류가 발생했습니다" },
       { status: 500 }
     );
+  } else {
+    const data = await response.json();
+    return data;
   }
-
-  const data = await response.json();
-
-  return data;
 }

@@ -1,8 +1,7 @@
 .mainNavHeader {
   text-align: center;
-  width: 40%;
+  width: 50%;
   margin: auto;
-  margin-top: 50px;
 }
 
 .mainNavUl {
@@ -28,4 +27,33 @@
 .active {
   font-size: 1.3rem;
   font-weight: 600;
+}
+
+@media (max-width: 720px) {
+  .mainNavHeader {
+    text-align: center;
+    width: 70%;
+    margin: auto;
+  }
+  .mainNavLi a:visited {
+    color: white;
+  }
+  .active {
+    font-size: 1.3rem;
+    font-weight: 600;
+  }
+}
+
+@media (max-width: 420px) {
+  .mainNavHeader {
+    text-align: center;
+    width: 70%;
+  }
+  .mainNavLi a:visited {
+    color: white;
+  }
+  .active {
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
 }

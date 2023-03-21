@@ -7,16 +7,15 @@ function MainNavigation() {
       <ul className={style.mainNavUl}>
         <li className={style.mainNavLi}>
           <NavLink
-            end
             to={"/"}
             className={({ isActive }) => (isActive ? style.active : "")}
           >
-            홈
+            개봉예정영화
           </NavLink>
         </li>
         <li className={style.mainNavLi}>
           <NavLink
-            to={"/movies?page=1"}
+            to={"/movies/films?page=1"}
             className={({ isActive }) => (isActive ? style.active : "")}
           >
             영화

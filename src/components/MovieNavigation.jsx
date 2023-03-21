@@ -7,18 +7,19 @@ function MovieNavigation() {
         <li className={style.mainNavLi}>
           <NavLink
             end
-            to={"/movies?page=1"}
+            to={"/movies/films?page=1"}
             className={({ isActive }) => (isActive ? style.active : "")}
           >
-            인기순
+            개봉예정
           </NavLink>
         </li>
         <li className={style.mainNavLi}>
           <NavLink
-            to={"/movies/films?page=1"}
+            end
+            to={"/movies?page=1"}
             className={({ isActive }) => (isActive ? style.active : "")}
           >
-            상영작
+            인기영화
           </NavLink>
         </li>
         <li className={style.mainNavLi}>

@@ -28,3 +28,26 @@
   font-size: 1.9rem;
   font-weight: 600;
 }
+
+@media (max-width: 720px) {
+  .mainNavHeader {
+    text-align: center;
+    width: 60%;
+  }
+}
+
+@media (max-width: 640px) {
+  .mainNavHeader {
+    text-align: center;
+    width: 70%;
+  }
+
+  .mainNavLi {
+    font-size: 0.8rem;
+    flex: 1;
+  }
+
+  .mainNavLi a:visited {
+    color: bisque;
+  }
+}

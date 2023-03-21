@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
 import style from "./MovieItem.module.css";
 
-function MovieItem({ item }) {
+function MovieItem({ item, message = "평점" }) {
   const imgbase = "https://image.tmdb.org/t/p/w200";
+
   return (
-    <div>
+    <div className={style.movieItemDdiv}>
       <ul className={style.movieItemUl}>
         {item.map((item) => (
           <li key={item.id} className={style.movieItemLi}>
@@ -16,7 +17,11 @@ function MovieItem({ item }) {
                 alt={item.title}
               />
             </Link>
-            <p className={style.movieItemAverage}>평점: {item.vote_average}</p>
+            <p className={style.movieItemAverage}>
+              {message === "개봉일"
+                ? `${message} : ${item.release_date}`
+                : `${message} : ${item.vote_average}`}
+            </p>
           </li>
         ))}
       </ul>
