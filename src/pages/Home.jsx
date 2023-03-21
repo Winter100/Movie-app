@@ -1,5 +1,6 @@
+import Search from "../components/Search";
 function HomePage() {
-  return <h1>홈페이지</h1>;
+  return <Search />;
 }
 
 export default HomePage;

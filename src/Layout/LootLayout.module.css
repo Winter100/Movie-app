@@ -1,7 +1,12 @@
 .mainNavigat {
-  width: 60%;
+  width: 80%;
   margin: auto;
-  margin-top: 30px;
   padding: 5px;
   border-radius: 10px;
+}
+
+@media (max-width: 414px) {
+  .mainNavigat {
+    width: 70%;
+  }
 }

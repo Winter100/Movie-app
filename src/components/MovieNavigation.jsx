@@ -6,7 +6,6 @@ function MovieNavigation() {
       <ul className={style.mainNavUl}>
         <li className={style.mainNavLi}>
           <NavLink
-            end
             to={"/movies/films?page=1"}
             className={({ isActive }) => (isActive ? style.active : "")}
           >
@@ -27,7 +26,7 @@ function MovieNavigation() {
             to={"/movies/toprated?page=1"}
             className={({ isActive }) => (isActive ? style.active : "")}
           >
-            평점순
+            인생영화
           </NavLink>
         </li>
       </ul>

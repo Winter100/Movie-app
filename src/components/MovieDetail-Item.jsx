@@ -42,7 +42,9 @@ function MovieDetailItem({ item }) {
               (포스터 클릭시 예고편이 재생됩니다)
             </p>
             <p className={style.movieDetailGenres}>{genres}</p>
-            <div style={{ color: "red", marginTop: 50 }}>줄거리</div>
+            <div style={{ color: "red" }} className={style.movieDetailstory}>
+              줄거리
+            </div>
             <p className={style.movieDetailOverView}>{overview}</p>
             <footer className={style.MovieDetailFooter}></footer>
           </div>

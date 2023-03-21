@@ -16,6 +16,10 @@
   flex: 1;
 }
 
+.movieDetailstory {
+  margin-top: 50px;
+}
+
 .movieDetailTitle {
   margin-top: 30px;
   margin-bottom: 5px;
@@ -36,14 +40,12 @@
 
 .movieDetailOverView {
   padding-top: 10px;
-  width: 80%;
+  width: 90%;
   margin: auto;
   font-size: 0.8rem;
   color: white;
-  padding: 5;
   line-height: 300%;
   text-align: left;
-  height: 50%;
 }
 
 .movieDetailImg:hover {
@@ -52,4 +54,40 @@
 
 .movieDetailImg {
   border-radius: 3px;
+}
+
+@media (max-width: 800px) {
+  .movieDetailAll {
+    text-align: center;
+    padding: 0px;
+  }
+  .movieDetailDiv {
+    display: block;
+    width: 90%;
+    border: 2px solid black;
+    border-radius: 8px;
+  }
+
+  .movieDetailImg {
+    width: 100%;
+  }
+
+  .movieDetailstory {
+    margin-top: 0px;
+  }
+
+  .movieDetailTitle {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+}
+
+@media (max-width: 414px) {
+  .movieDetailOverView {
+    line-height: 160%;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+  }
 }

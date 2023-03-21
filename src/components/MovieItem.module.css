@@ -9,7 +9,6 @@
   text-align: center;
   margin: 10px;
   flex: 1;
-
   border: 1px solid rgb(90, 90, 90);
   border-radius: 10px;
 }
@@ -26,4 +25,32 @@
   margin: 5px;
   font-size: 0.7rem;
   color: white;
+}
+
+@media (max-width: 412px) {
+  .movieItemLi {
+    text-align: center;
+    margin: 5px;
+    flex: 1;
+    border: 1px solid rgb(90, 90, 90);
+    border-radius: 7px;
+  }
+
+  .movieItemTitle {
+    color: white;
+    font-size: 1rem;
+    font-weight: 300;
+    text-align: center;
+  }
+
+  .movieItemAverage {
+    font-size: 1rem;
+    color: white;
+  }
+}
+
+@media (max-width: 360px) {
+  .movieItemTitle {
+    font-size: 0.8rem;
+  }
 }

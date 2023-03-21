@@ -29,25 +29,65 @@
   font-weight: 600;
 }
 
-@media (max-width: 720px) {
+@media (max-width: 414px) {
   .mainNavHeader {
     text-align: center;
     width: 60%;
   }
-}
-
-@media (max-width: 640px) {
-  .mainNavHeader {
-    text-align: center;
-    width: 70%;
+  .mainNavUl {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
   }
 
   .mainNavLi {
-    font-size: 0.8rem;
+    font-size: 1rem;
     flex: 1;
   }
 
   .mainNavLi a:visited {
-    color: bisque;
+    color: white;
+  }
+
+  .mainNavLi a:hover {
+    background-color: rgb(250, 170, 170);
+    border-radius: 10px;
+  }
+
+  .active {
+    font-size: 1.4rem;
+    font-weight: 600;
+  }
+}
+
+@media (max-width: 375px) {
+  .mainNavHeader {
+    text-align: center;
+    width: 60%;
+    margin: auto;
+  }
+  .mainNavUl {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  .mainNavLi {
+    font-size: 0.7rem;
+    flex: 1;
+  }
+
+  .mainNavLi a:visited {
+    color: white;
+  }
+
+  .mainNavLi a:hover {
+    background-color: rgb(250, 170, 170);
+    border-radius: 7px;
+  }
+
+  .active {
+    font-size: 1.2rem;
+    font-weight: 600;
   }
 }

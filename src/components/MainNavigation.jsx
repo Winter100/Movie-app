@@ -10,7 +10,7 @@ function MainNavigation() {
             to={"/"}
             className={({ isActive }) => (isActive ? style.active : "")}
           >
-            개봉예정영화
+            홈
           </NavLink>
         </li>
         <li className={style.mainNavLi}>
