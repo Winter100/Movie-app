@@ -2,6 +2,7 @@ import VideoPlayer from "./VideoPlayer";
 
 import style from "./MovieDetail-item.module.css";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function MovieDetailItem({ item }) {
   const imgbase = "https://image.tmdb.org/t/p/w300";
@@ -25,8 +26,10 @@ function MovieDetailItem({ item }) {
     VideosKey = false;
   }
 
+  const navigate = useNavigate();
+
   return (
-    <div>
+    <>
       {isVideo && <VideoPlayer video={VideosKey} setIsVideo={setIsVideo} />}
       <div className={style.movieDetailAll}>
         <div className={style.movieDetailDiv}>
@@ -46,11 +49,13 @@ function MovieDetailItem({ item }) {
               줄거리
             </div>
             <p className={style.movieDetailOverView}>{overview}</p>
-            <footer className={style.MovieDetailFooter}></footer>
+            <footer className={style.MovieDetailFooter}>
+              <button onClick={() => navigate(-1)}>{"뒤로"}</button>
+            </footer>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

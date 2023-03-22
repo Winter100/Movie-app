@@ -1,12 +1,5 @@
 .mainNavigat {
   width: 80%;
   margin: auto;
-  padding: 5px;
   border-radius: 10px;
-}
-
-@media (max-width: 414px) {
-  .mainNavigat {
-    width: 70%;
-  }
 }

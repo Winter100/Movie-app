@@ -6,9 +6,14 @@
   margin: auto;
 }
 
-@media (max-width: 414px) {
+@media (max-width: 1024px) {
+  .movielayoutMain {
+    border-radius: 7px;
+  }
+}
+
+@media (max-width: 768px) {
   .movielayoutMain {
     width: 90%;
-    border: none;
   }
 }

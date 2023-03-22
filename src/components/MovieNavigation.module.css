@@ -20,49 +20,32 @@
 }
 
 .mainNavLi a:hover {
-  background-color: rgb(250, 170, 170);
-  border-radius: 15px;
+  color: antiquewhite;
 }
 
-.active {
+.mainNavLi a.active {
   font-size: 1.2rem;
   font-weight: 600;
+  color: antiquewhite;
 }
 
-@media (max-width: 720px) {
+@media (max-width: 1024px) {
   .mainNavHeader {
-    text-align: center;
-    width: 70%;
-    margin: auto;
+    width: 60%;
   }
-  .mainNavLi a:visited {
-    color: white;
-  }
-  .active {
-    font-size: 1.3rem;
+  .mainNavLi a.active {
+    font-size: 1.2rem;
     font-weight: 600;
+    color: antiquewhite;
   }
 }
 
-@media (max-width: 414px) {
+@media (max-width: 768px) {
   .mainNavHeader {
     text-align: center;
-    width: 100%;
+    width: 60%;
   }
-}
-
-@media (max-width: 360px) {
-  .mainNavHeader {
-    text-align: center;
-    width: 100%;
-  }
-
-  .mainNavLi {
+  .mainNavLi:active {
     font-size: 0.8rem;
-  }
-
-  .active {
-    font-size: 1rem;
-    font-weight: 600;
   }
 }

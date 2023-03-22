@@ -1,6 +1,6 @@
-import Search from "../components/Search";
+import HomeItem from "../components/Home/HomeItem";
 function HomePage() {
-  return <Search />;
+  return <HomeItem />;
 }
 
 export default HomePage;

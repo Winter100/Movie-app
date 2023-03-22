@@ -2,7 +2,6 @@
   text-align: center;
   width: 60%;
   margin: auto;
-  margin-top: 30px;
 }
 .mainNavUl {
   display: flex;
@@ -11,8 +10,7 @@
 }
 
 .mainNavLi {
-  font-size: 1.3rem;
-  flex: 1;
+  font-size: 1rem;
 }
 
 .mainNavLi a:visited {
@@ -20,74 +18,30 @@
 }
 
 .mainNavLi a:hover {
-  background-color: rgb(250, 170, 170);
-  border-radius: 15px;
-}
-
-.active {
-  font-size: 1.9rem;
+  color: blanchedalmond;
   font-weight: 600;
 }
 
-@media (max-width: 414px) {
+.mainNavLi a.active {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: blanchedalmond;
+}
+
+@media (max-width: 1024px) {
   .mainNavHeader {
-    text-align: center;
-    width: 60%;
-  }
-  .mainNavUl {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
+    width: 50%;
   }
 
   .mainNavLi {
     font-size: 1rem;
-    flex: 1;
   }
 
   .mainNavLi a:visited {
     color: white;
   }
 
-  .mainNavLi a:hover {
-    background-color: rgb(250, 170, 170);
-    border-radius: 10px;
-  }
-
-  .active {
-    font-size: 1.4rem;
-    font-weight: 600;
-  }
-}
-
-@media (max-width: 375px) {
-  .mainNavHeader {
-    text-align: center;
-    width: 60%;
-    margin: auto;
-  }
-  .mainNavUl {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-  }
-
-  .mainNavLi {
-    font-size: 0.7rem;
-    flex: 1;
-  }
-
-  .mainNavLi a:visited {
-    color: white;
-  }
-
-  .mainNavLi a:hover {
-    background-color: rgb(250, 170, 170);
-    border-radius: 7px;
-  }
-
-  .active {
-    font-size: 1.2rem;
-    font-weight: 600;
+  .mainNavLi a.active {
+    color: blanchedalmond;
   }
 }

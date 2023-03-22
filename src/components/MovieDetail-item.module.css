@@ -1,6 +1,5 @@
 .movieDetailAll {
   margin: auto;
-  padding: 5px;
   width: 90%;
   z-index: 20;
 }
@@ -28,7 +27,7 @@
   color: white;
 }
 .movieDetailEx {
-  margin-bottom: 20px;
+  margin-bottom: 2%;
   font-size: 0.7rem;
   color: burlywood;
 }
@@ -39,7 +38,7 @@
 }
 
 .movieDetailOverView {
-  padding-top: 10px;
+  padding-top: 1%;
   width: 90%;
   margin: auto;
   font-size: 0.8rem;
@@ -56,20 +55,15 @@
   border-radius: 3px;
 }
 
-@media (max-width: 800px) {
-  .movieDetailAll {
-    text-align: center;
-    padding: 0px;
-  }
+.MovieDetailFooter {
+  margin: 3%;
+}
+
+@media (max-width: 1024px) {
   .movieDetailDiv {
-    display: block;
-    width: 90%;
+    width: 100%;
     border: 2px solid black;
     border-radius: 8px;
-  }
-
-  .movieDetailImg {
-    width: 100%;
   }
 
   .movieDetailstory {
@@ -77,17 +71,30 @@
   }
 
   .movieDetailTitle {
-    margin-top: 5px;
     margin-bottom: 5px;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     font-weight: 600;
   }
 }
 
-@media (max-width: 414px) {
+@media (max-width: 768px) {
+  .movieDetailDiv {
+    display: block;
+  }
+
+  .movieDetailImg {
+    width: 100%;
+  }
+
+  .movieDetailTitle {
+    margin: 2%;
+    font-size: 1.2rem;
+    margin-bottom: 2%;
+  }
   .movieDetailOverView {
-    line-height: 160%;
+    margin-top: 3%;
+    line-height: 200%;
     font-size: 0.9rem;
-    margin-bottom: 10px;
+    margin-bottom: 3%;
   }
 }
