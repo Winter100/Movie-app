@@ -1,7 +1,6 @@
 import MovieItem from "../components/MovieItem";
 
 import { json, useLoaderData, useSearchParams } from "react-router-dom";
-import { API } from "../util/api";
 import { useState, useEffect } from "react";
 import Pagination from "react-js-pagination";
 
@@ -45,7 +44,7 @@ export async function loader({ request }) {
   const searchParams = new URL(request.url).searchParams;
   const page = searchParams.get("page");
 
-  const GenresUrl = `https://api.themoviedb.org/3/movie/top_rated?api_key=${API}&language=ko-KR&page=${page}`;
+  const GenresUrl = `https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=ko-KR&page=${page}`;
 
   const response = await fetch(GenresUrl);
 

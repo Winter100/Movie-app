@@ -1,6 +1,5 @@
 import { json, useLoaderData, useSearchParams } from "react-router-dom";
 import MovieItem from "../components/MovieItem";
-import { API } from "../util/api";
 
 import Pagination from "react-js-pagination";
 import "./Paging.css";
@@ -43,7 +42,7 @@ export async function loader({ request }) {
   const searchParams = new URL(request.url).searchParams;
   const page = searchParams.get("page");
 
-  const popularUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${API}&language=ko-KR&page=${page}`;
+  const popularUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=ko-KR&page=${page}`;
 
   // await new Promise((resolve) => setTimeout(resolve, 2000)); // 2초 대기
 

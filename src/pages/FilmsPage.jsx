@@ -1,7 +1,6 @@
 import MovieItem from "../components/MovieItem";
 
 import { json, useLoaderData, useSearchParams } from "react-router-dom";
-import { API } from "../util/api";
 import { useEffect, useState } from "react";
 import Pagination from "react-js-pagination";
 
@@ -17,10 +16,7 @@ function FilmsPage() {
     setPage(paramsPage);
   }, [paramsPage, page]);
 
-  // const navigate = useNavigate();
-
   const handlePageChange = (page) => {
-    // navigate(`/movies?page=${page}`);
     setSearchParams(`page=${page}`);
     setPage(page);
   };
@@ -47,10 +43,7 @@ export async function loader({ request }) {
   const searchParams = new URL(request.url).searchParams;
   const page = searchParams.get("page");
 
-  // const FilmstUrl = `https://api.themoviedb.org/3/movie/now_playing?api_key=${API}&language=ko-KR&page=${page}&region=KR`;
-  const FilmstUrl = `https://api.themoviedb.org/3/movie/upcoming?api_key=${API}&language=ko-KR&page=${page}&region=KR`;
-
-  // await new Promise((resolve) => setTimeout(resolve, 2000)); // 2초 대기
+  const FilmstUrl = `https://api.themoviedb.org/3/movie/upcoming?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=ko-KR&page=${page}&region=KR`;
 
   const response = await fetch(FilmstUrl);
 
