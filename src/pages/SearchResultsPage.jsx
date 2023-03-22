@@ -3,8 +3,6 @@ import SearchResultList from "../components/SearchResultList";
 function SearchResultsPage() {
   const data = useLoaderData();
 
-  console.log("data", data);
-
   return <SearchResultList data={data.results} />;
 }
 

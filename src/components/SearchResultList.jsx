@@ -2,8 +2,6 @@ import style from "./SearchResultList.module.css";
 import { Link, useSearchParams } from "react-router-dom";
 
 function SearchResultList({ data }) {
-  console.log(data);
-
   const [searchParams] = useSearchParams();
 
   const paramsValue = searchParams.get("searchvalue");
