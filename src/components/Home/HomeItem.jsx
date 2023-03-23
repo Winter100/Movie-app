@@ -1,18 +1,19 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { homeimg300, homeimg400 } from "../../util/url";
 import style from "./HomeItem.module.css";
 import { Link } from "react-router-dom";
 function HomeItem({ item }) {
-  const data = item;
-
   const [movie, setMovie] = useState(0);
+  const [imgName, setimgName] = useState(false);
 
-  // useEffect(() => {
-  //   const remove = setInterval(() => {
-  //     setMovie((num) => num + 1);
-  //   }, 2500);
-  //   return () => clearInterval(remove);
-  // }, [movie]);
+  useEffect(() => {
+    setimgName(true);
+    const remove = setInterval(() => {
+      setMovie((num) => num + 1);
+      setimgName((is) => !is);
+    }, 3000);
+    return () => clearInterval(remove);
+  }, [movie, imgName]);
 
   if (movie < 0) {
     return setMovie(19);
@@ -20,7 +21,6 @@ function HomeItem({ item }) {
   if (movie > 19) {
     return setMovie(0);
   }
-  console.log(data);
 
   let leftNumber = item[movie - 1];
   let rightNumber = item[movie + 1];
@@ -32,6 +32,10 @@ function HomeItem({ item }) {
   if (movie + 1 > 19) {
     rightNumber = item[0];
   }
+
+  const mainImgClassName = `${style.homeItemMainImg} ${
+    imgName ? style.imgAnimation : ""
+  }`;
 
   return (
     <div className={style.homeItemOutBorder}>
@@ -51,7 +55,7 @@ function HomeItem({ item }) {
             <p className={style.homeItemTitle}>{itemNumber.title}</p>
             <Link to={"/movies/detail/" + itemNumber.id}>
               <img
-                className={style.homeItemMainImg}
+                className={mainImgClassName}
                 src={homeimg400 + itemNumber.poster_path}
                 alt={itemNumber.title}
               />
@@ -67,7 +71,6 @@ function HomeItem({ item }) {
           alt={rightNumber.title}
         />
       </div>
-      <div></div>
       <p>{movie}</p>
     </div>
   );

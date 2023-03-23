@@ -2,7 +2,7 @@
   display: grid;
   margin: auto;
   text-align: center;
-  border: 1px solid white;
+
   border-radius: 15px;
   width: 100%;
   min-height: 80vh;
@@ -10,6 +10,9 @@
 
   grid-template-columns: 20% auto 20%;
   align-items: center;
+}
+.asdfzxcv {
+  border: 1px solid white;
 }
 
 .homeItemTitle {
@@ -28,9 +31,12 @@
 }
 
 .homeItemMainImg {
+  width: 95%;
+}
+
+.imgAnimation {
   animation-name: mainImg;
   animation-duration: 2s;
-  width: 95%;
 }
 
 .homeItemMainImg:hover {
