@@ -1,12 +1,11 @@
 import style from "./SearchResultList.module.css";
 import { Link, useSearchParams } from "react-router-dom";
+import { imgbase } from "../util/url";
 
 function SearchResultList({ data }) {
   const [searchParams] = useSearchParams();
 
   const paramsValue = searchParams.get("searchvalue");
-
-  const imgbase = "https://image.tmdb.org/t/p/w200";
 
   return (
     <div className={style.resultListBorder}>

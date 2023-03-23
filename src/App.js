@@ -1,7 +1,7 @@
 import "./App.css";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import HomePage from "./pages/Home";
+import HomePage, { loader as homeLoader } from "./pages/Home";
 
 import LootLayout from "./Layout/LootLayout";
 import Movies, { loader as comingLoader } from "./pages/Movies";
@@ -23,7 +23,7 @@ function App() {
       element: <LootLayout />,
       errorElement: <ErrorPage />,
       children: [
-        { index: true, element: <HomePage /> },
+        { index: true, element: <HomePage />, loader: homeLoader },
         {
           path: "movies",
           element: <MovieLayout />,

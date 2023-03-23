@@ -1,9 +1,8 @@
 import { Link } from "react-router-dom";
+import { imgbase } from "../util/url";
 import style from "./MovieItem.module.css";
 
 function MovieItem({ item, message = "평점" }) {
-  const imgbase = "https://image.tmdb.org/t/p/w200";
-
   return (
     <div className={style.movieItemDdiv}>
       <ul className={style.movieItemUl}>
