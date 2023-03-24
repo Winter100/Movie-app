@@ -18,8 +18,6 @@
   background-color: rgb(220, 220, 220);
   grid-template-columns: repeat(auto-fit, minmax(20%, auto));
   grid-auto-rows: minmax(auto);
-
-  gap: 10px;
 }
 
 .resultListLi {
@@ -27,12 +25,12 @@
 }
 
 .resultImg {
-  margin: auto;
 }
 
 .resultListD {
   display: grid;
   grid-template-rows: 1fr 3fr;
+  word-break: keep-all;
 }
 
 .resultTitle {

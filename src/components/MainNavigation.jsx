@@ -21,14 +21,6 @@ function MainNavigation() {
             영화
           </NavLink>
         </li>
-        <li className={style.mainNavLi}>
-          <NavLink
-            to={"/tv-show"}
-            className={({ isActive }) => (isActive ? style.active : "")}
-          >
-            Tv
-          </NavLink>
-        </li>
       </ul>
     </header>
   );

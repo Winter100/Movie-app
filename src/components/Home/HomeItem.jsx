@@ -4,14 +4,13 @@ import style from "./HomeItem.module.css";
 import { Link } from "react-router-dom";
 function HomeItem({ item }) {
   const [movie, setMovie] = useState(0);
-  const [imgName, setimgName] = useState(false);
+  const [imgName, setimgName] = useState(true);
 
   useEffect(() => {
-    setimgName(true);
     const remove = setInterval(() => {
       setMovie((num) => num + 1);
       setimgName((is) => !is);
-    }, 3000);
+    }, 4000);
     return () => clearInterval(remove);
   }, [movie, imgName]);
 
@@ -34,45 +33,47 @@ function HomeItem({ item }) {
   }
 
   const mainImgClassName = `${style.homeItemMainImg} ${
-    imgName ? style.imgAnimation : ""
+    imgName ? style.imgAnimation : style.imgAnimation2
   }`;
 
   return (
-    <div className={style.homeItemOutBorder}>
-      <div>
-        <img
-          onClick={() => setMovie((num) => num - 1)}
-          className={style.homeItemsubImg}
-          src={homeimg300 + leftNumber.poster_path}
-          alt={leftNumber.title}
-        />
-      </div>
-
-      <div className={style.homeItemInBorders}>
+    <>
+      <header className={style.homtItemHeader}>
         <h2 className={style.homeItemTitle}>오늘의 인기 영화</h2>
-        <div className={style.homeItemInBorder}>
-          <div className={style.homeItemDetail}>
-            <p className={style.homeItemTitle}>{itemNumber.title}</p>
-            <Link to={"/movies/detail/" + itemNumber.id}>
-              <img
-                className={mainImgClassName}
-                src={homeimg400 + itemNumber.poster_path}
-                alt={itemNumber.title}
-              />
-            </Link>
+        <p style={{ color: "khaki" }}>{itemNumber.title}</p>
+      </header>
+      <div className={style.homeItemOutBorder}>
+        <div>
+          <img
+            onClick={() => setMovie((num) => num - 1)}
+            className={style.homeItemsubImg}
+            src={homeimg300 + leftNumber.poster_path}
+            alt={leftNumber.title}
+          />
+        </div>
+        <div className={style.homeItemInBorders}>
+          <div className={style.homeItemInBorder}>
+            <div className={style.homeItemDetail}>
+              <Link to={"/movies/detail/" + itemNumber.id}>
+                <img
+                  className={mainImgClassName}
+                  src={homeimg400 + itemNumber.poster_path}
+                  alt={itemNumber.title}
+                />
+              </Link>
+            </div>
           </div>
         </div>
+        <div>
+          <img
+            onClick={() => setMovie((num) => num + 1)}
+            className={style.homeItemsubImg}
+            src={homeimg300 + rightNumber.poster_path}
+            alt={rightNumber.title}
+          />
+        </div>
       </div>
-      <div>
-        <img
-          onClick={() => setMovie((num) => num + 1)}
-          className={style.homeItemsubImg}
-          src={homeimg300 + rightNumber.poster_path}
-          alt={rightNumber.title}
-        />
-      </div>
-      <p>{movie}</p>
-    </div>
+    </>
   );
 }
 

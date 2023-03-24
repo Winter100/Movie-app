@@ -1,5 +1,6 @@
 .mainNavigat {
-  width: 80%;
   margin: auto;
-  border-radius: 10px;
+}
+
+@media (max-width: 412px) {
 }

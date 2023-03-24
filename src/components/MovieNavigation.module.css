@@ -49,3 +49,12 @@
     font-size: 0.8rem;
   }
 }
+
+@media (max-width: 412px) {
+  .mainNavLi {
+    font-size: 0.6rem;
+  }
+  .mainNavLi a.active {
+    font-size: 0.8rem;
+  }
+}
