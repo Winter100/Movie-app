@@ -15,7 +15,8 @@ function MainNavigation() {
         </li>
         <li className={style.mainNavLi}>
           <NavLink
-            to={"/movies/films?page=1"}
+            // to={"/movies/films?page=1"}
+            to={"/movies"}
             className={({ isActive }) => (isActive ? style.active : "")}
           >
             영화

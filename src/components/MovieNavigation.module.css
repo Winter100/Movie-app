@@ -23,7 +23,7 @@
   color: antiquewhite;
 }
 
-.mainNavLi a.active {
+.mainNavLi a.actives {
   font-size: 1.2rem;
   font-weight: 600;
   color: antiquewhite;
@@ -33,7 +33,7 @@
   .mainNavHeader {
     width: 60%;
   }
-  .mainNavLi a.active {
+  .mainNavLi a.actives {
     font-size: 1.2rem;
     font-weight: 600;
     color: antiquewhite;
@@ -54,7 +54,7 @@
   .mainNavLi {
     font-size: 0.6rem;
   }
-  .mainNavLi a.active {
+  .mainNavLi a.actives {
     font-size: 0.8rem;
   }
 }
