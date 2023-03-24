@@ -5,7 +5,7 @@ import Pagination from "react-js-pagination";
 import "./Paging.css";
 import { useEffect, useState } from "react";
 
-function Movies() {
+function PopularPage() {
   const [searchParams, setSearchParams] = useSearchParams();
   const paramsPage = Number(searchParams.get("page"));
   const movies = useLoaderData();
@@ -36,7 +36,7 @@ function Movies() {
   );
 }
 
-export default Movies;
+export default PopularPage;
 
 export async function loader({ request }) {
   const searchParams = new URL(request.url).searchParams;

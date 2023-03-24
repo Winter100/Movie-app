@@ -4,7 +4,7 @@ import { json, useLoaderData, useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Pagination from "react-js-pagination";
 
-function FilmsPage() {
+function ComingPage() {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const paramsPage = Number(searchParams.get("page"));
@@ -37,15 +37,15 @@ function FilmsPage() {
   );
 }
 
-export default FilmsPage;
+export default ComingPage;
 
 export async function loader({ request }) {
   const searchParams = new URL(request.url).searchParams;
   const page = searchParams.get("page");
 
-  const FilmstUrl = `https://api.themoviedb.org/3/movie/upcoming?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=ko-KR&page=${page}&region=KR`;
+  const comingUrl = `https://api.themoviedb.org/3/movie/upcoming?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=ko-KR&page=${page}&region=KR`;
 
-  const response = await fetch(FilmstUrl);
+  const response = await fetch(comingUrl);
 
   if (!response.ok) {
     throw json(

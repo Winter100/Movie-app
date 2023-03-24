@@ -16,7 +16,7 @@ function MovieNavigation() {
         <li className={style.mainNavLi}>
           <NavLink
             end
-            to={"/movies/films?page=1"}
+            to={"/movies/popular?page=1"}
             className={({ isActive }) => (isActive ? style.actives : "")}
           >
             인기영화

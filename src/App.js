@@ -4,13 +4,15 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import HomePage, { loader as homeLoader } from "./pages/Home";
 
 import LootLayout from "./Layout/LootLayout";
-import Movies, { loader as popularMoviesLoader } from "./pages/Movies";
+import PopularPage, {
+  loader as popularMoviesLoader,
+} from "./pages/PopularPage";
 import MovieLayout from "./Layout/MovieLayout";
 import ErrorPage from "./pages/ErrorPage";
 import MovieDetailPage, {
   loader as movieDetailLoader,
 } from "./pages/MovieDeatailPage";
-import FilmsPage, { loader as comingLoader } from "./pages/FilmsPage";
+import ComingPage, { loader as comingLoader } from "./pages/ComingPage";
 import TopRatedPage, { loader as topRatedLoader } from "./pages/TopRatedPage";
 import SearchResultsPage, {
   loader as searchLoader,
@@ -28,10 +30,10 @@ function App() {
           path: "movies",
           element: <MovieLayout />,
           children: [
-            { index: true, element: <FilmsPage />, loader: comingLoader },
+            { index: true, element: <ComingPage />, loader: comingLoader },
             {
-              path: "films",
-              element: <Movies />,
+              path: "popular",
+              element: <PopularPage />,
               loader: popularMoviesLoader,
             },
             {
