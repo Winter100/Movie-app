@@ -1,0 +1,15 @@
+.commentOutborder {
+  padding: 3px;
+  font-size: 0.8rem;
+  width: 80%;
+  border-top: 3px solid white;
+  margin: auto;
+  color: white;
+}
+
+.commentLi {
+  display: grid;
+  grid-template-columns: 20% 70% 10%;
+  border-bottom: 1px solid beige;
+  padding: 0.3%;
+}

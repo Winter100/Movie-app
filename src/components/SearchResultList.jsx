@@ -27,7 +27,13 @@ function SearchResultList({ data }) {
                 />
                 <div className={style.resultListD}>
                   <h2 className={style.resultTitle}>{item.title}</h2>
-                  <p className={style.resultListP}>{item.overview}</p>
+                  <p className={style.resultListP}>
+                    {item.overview.length < 1
+                      ? "줄거리 정보가 없습니다"
+                      : item.overview.length > 300
+                      ? item.overview.slice(0, 300) + "......."
+                      : item.overview}
+                  </p>
                 </div>
               </div>
             </Link>

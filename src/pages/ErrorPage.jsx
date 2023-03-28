@@ -12,7 +12,12 @@ function ErrorPage() {
     title = "찾을 수 없는 페이지";
     message = "옳바른 경로로 접속해주세요";
   }
+  if (error.status === 500) {
+    message = error.data.message;
+  }
+
   console.log(error);
+
   return (
     <div className={style.errorheader}>
       <LootLayout />

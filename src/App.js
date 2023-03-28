@@ -11,6 +11,7 @@ import MovieLayout from "./Layout/MovieLayout";
 import ErrorPage from "./pages/ErrorPage";
 import MovieDetailPage, {
   loader as movieDetailLoader,
+  action as movieDetailAction,
 } from "./pages/MovieDeatailPage";
 import ComingPage, { loader as comingLoader } from "./pages/ComingPage";
 import TopRatedPage, { loader as topRatedLoader } from "./pages/TopRatedPage";
@@ -46,6 +47,7 @@ function App() {
         {
           path: "/movies/detail/:id",
           element: <MovieDetailPage />,
+          action: movieDetailAction,
           loader: movieDetailLoader,
         },
         {

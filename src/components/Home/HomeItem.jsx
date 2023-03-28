@@ -11,6 +11,7 @@ function HomeItem({ item }) {
       setMovie((num) => num + 1);
       setimgName((is) => !is);
     }, 4000);
+
     return () => clearInterval(remove);
   }, [movie, imgName]);
 

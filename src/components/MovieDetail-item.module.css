@@ -1,6 +1,6 @@
 .movieDetailAll {
   margin: auto;
-  width: 90%;
+  width: 80%;
   z-index: 20;
 }
 .movieDetailDiv {
@@ -21,13 +21,13 @@
 
 .movieDetailTitle {
   margin-top: 30px;
-  margin-bottom: 5px;
+  margin-bottom: 0px;
   font-size: 1.9rem;
   font-weight: 700;
   color: white;
 }
 .movieDetailEx {
-  margin-bottom: 2%;
+  margin: 2%;
   font-size: 0.7rem;
   color: burlywood;
 }

@@ -4,7 +4,7 @@ import style from "./MovieDetail-item.module.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function MovieDetailItem({ item }) {
+function MovieDetailItem({ item, setIsCommnet }) {
   const imgbase = "https://image.tmdb.org/t/p/w300";
 
   const [isVideo, setIsVideo] = useState(false);
@@ -51,6 +51,9 @@ function MovieDetailItem({ item }) {
             <p className={style.movieDetailOverView}>{overview}</p>
             <footer className={style.MovieDetailFooter}>
               <button onClick={() => navigate(-1)}>{"뒤로"}</button>
+              <button onClick={() => setIsCommnet((is) => !is)}>
+                {"댓글"}
+              </button>
             </footer>
           </div>
         </div>

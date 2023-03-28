@@ -2,7 +2,7 @@ import Search from "../components/Search";
 
 function SearchBar() {
   return (
-    <div style={{ textAlign: "center", marginTop: 50 }}>
+    <div style={{ textAlign: "center", margin: 20 }}>
       <Search />
     </div>
   );
