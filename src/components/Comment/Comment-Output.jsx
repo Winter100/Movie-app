@@ -1,33 +1,45 @@
 import style from "./Comment-Output.module.css";
 function CommentOutput({ item }) {
-  const commentList = [];
+  let commentList = [];
 
-  for (const key in item) {
-    commentList.push({
-      key: key,
-      name: item[key].name,
-      value: item[key].value,
-      password: item[key].password,
-      date: item[key].date,
-    });
+  if (item) {
+    for (const key in item) {
+      commentList.push({
+        key: key,
+        name: item[key].name,
+        value: item[key].value,
+        password: item[key].password,
+        date: item[key].date,
+      });
+    }
+  } else {
+    commentList = "";
   }
+
+  console.log(commentList);
 
   return (
     <div className={style.commentOutborder}>
-      <ul>
-        {commentList.map((item) => (
-          <li key={item.key} className={style.commentLi}>
-            <div>
-              <span>{item.name}</span>
-            </div>
-            <div>
-              <span>{item.value}</span>
-            </div>
-            <div>
-              <span>{item.date}</span>
-            </div>
-          </li>
-        ))}
+      <ul className={style.commentOutUl}>
+        {commentList ? (
+          commentList.map((item) => (
+            <li key={item.key} className={style.commentLi}>
+              <div>
+                <span>{item.name}</span>
+              </div>
+              <div>
+                <span className={style.outPutValue}>{item.value}</span>
+              </div>
+              <div className={style.outPutDate}>
+                <span>{item.date}</span>
+              </div>
+            </li>
+          ))
+        ) : (
+          <div className={style.outPutNone}>
+            <p>작성된 댓글이 없습니다</p>
+          </div>
+        )}
       </ul>
     </div>
   );

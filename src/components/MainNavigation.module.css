@@ -13,6 +13,10 @@
   font-size: 1rem;
 }
 
+.mainNavLi a:link {
+  color: white;
+}
+
 .mainNavLi a:visited {
   color: white;
 }

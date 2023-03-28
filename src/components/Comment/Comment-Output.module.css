@@ -1,15 +1,41 @@
 .commentOutborder {
   padding: 3px;
+
   font-size: 0.8rem;
   width: 80%;
-  border-top: 3px solid white;
+  border-top: 2px solid white;
+
   margin: auto;
   color: white;
+  margin-top: 2%;
 }
 
 .commentLi {
   display: grid;
-  grid-template-columns: 20% 70% 10%;
+  grid-template-columns: 20% 65% 15%;
   border-bottom: 1px solid beige;
   padding: 0.3%;
+}
+
+.outPutValue {
+  word-wrap: break-word;
+}
+
+.outPutDate {
+  text-align: center;
+}
+.outPutNone {
+  margin-top: 13px;
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+@media (max-width: 768px) {
+  .commentLi {
+    font-size: 0.7rem;
+  }
+
+  .commentLi {
+    grid-template-columns: 30% 50% 20%;
+  }
 }

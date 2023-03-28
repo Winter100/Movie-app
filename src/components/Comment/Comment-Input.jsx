@@ -6,7 +6,7 @@ function Comment() {
     <Form method="PUT">
       <div className={style.commentOutborder}>
         <div className={style.commentInputName}>
-          <input type="text" name="name" placeholder="작성자" required></input>
+          <input type="text" name="name" placeholder="작성자" required />
         </div>
         <div className={style.commentInputPassword}>
           <input
@@ -15,7 +15,7 @@ function Comment() {
             name="password"
             minLength="4"
             placeholder="비밀번호"
-          ></input>
+          />
         </div>
         <div className={style.commentInputValue}>
           <textarea required placeholder="내용을 입력해주세요" name="value" />
