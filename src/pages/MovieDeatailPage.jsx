@@ -2,7 +2,7 @@ import { useState } from "react";
 import { json, redirect, useLoaderData } from "react-router-dom";
 import CommentInput from "../components/Comment/Comment-Input";
 import CommentOutPut from "../components/Comment/Comment-Output";
-import MovieDetailItem from "../components/MovieDetail-Item";
+import MovieDetailItem from "../components/Movie/MovieDetail-Item";
 
 function MovieDetailPage() {
   const { data, comment } = useLoaderData();

@@ -1,5 +1,5 @@
 import { json, useLoaderData } from "react-router-dom";
-import SearchResultList from "../components/SearchResultList";
+import SearchResultList from "../components/Search/SearchResultList";
 function SearchResultsPage() {
   const data = useLoaderData();
 

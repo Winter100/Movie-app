@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import MovieNavigation from "../components/MovieNavigation";
+import MovieNavigation from "../components/Navigation/MovieNavigation";
 import style from "./MovieLayout.module.css";
 function MovieLayout() {
   return (

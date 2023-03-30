@@ -18,6 +18,7 @@ import TopRatedPage, { loader as topRatedLoader } from "./pages/TopRatedPage";
 import SearchResultsPage, {
   loader as searchLoader,
 } from "./pages/SearchResultsPage";
+import AuthPage, { action as authAction } from "./pages/AuthPage";
 
 function App() {
   const router = createBrowserRouter([
@@ -54,6 +55,11 @@ function App() {
           path: "/resultes",
           element: <SearchResultsPage />,
           loader: searchLoader,
+        },
+        {
+          path: "/auth",
+          element: <AuthPage />,
+          action: authAction,
         },
       ],
     },

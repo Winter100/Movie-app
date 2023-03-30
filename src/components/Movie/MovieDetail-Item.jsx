@@ -1,4 +1,4 @@
-import VideoPlayer from "./VideoPlayer";
+import VideoPlayer from "../Video/VideoPlayer";
 
 import style from "./MovieDetail-item.module.css";
 import { useState } from "react";

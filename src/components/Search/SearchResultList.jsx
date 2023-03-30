@@ -1,6 +1,6 @@
 import style from "./SearchResultList.module.css";
 import { Link, useSearchParams } from "react-router-dom";
-import { imgbase } from "../util/url";
+import { imgbase } from "../../util/url";
 
 function SearchResultList({ data }) {
   const [searchParams] = useSearchParams();

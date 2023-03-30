@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { imgbase } from "../util/url";
+import { imgbase } from "../../util/url";
 import style from "./MovieItem.module.css";
 
 function MovieItem({ item, message = "평점" }) {

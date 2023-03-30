@@ -1,4 +1,4 @@
-import MovieItem from "../components/MovieItem";
+import MovieItem from "../components/Movie/MovieItem";
 
 import { json, useLoaderData, useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";

@@ -1,0 +1,24 @@
+.auth {
+  margin: auto;
+  border: 1px solid red;
+  width: 500px;
+  height: 70vh;
+
+  background-color: bisque;
+}
+
+.header {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.autmDiv {
+  margin: 5%;
+}
+
+@media (max-width: 1024px) {
+  .auth {
+    width: 60%;
+  }
+}

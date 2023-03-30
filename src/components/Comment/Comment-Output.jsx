@@ -16,8 +16,6 @@ function CommentOutput({ item }) {
     commentList = "";
   }
 
-  console.log(commentList);
-
   return (
     <div className={style.commentOutborder}>
       <ul className={style.commentOutUl}>

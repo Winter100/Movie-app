@@ -1,5 +1,5 @@
 import { json, useLoaderData, useSearchParams } from "react-router-dom";
-import MovieItem from "../components/MovieItem";
+import MovieItem from "../components/Movie/MovieItem";
 
 import Pagination from "react-js-pagination";
 import "./Paging.css";
