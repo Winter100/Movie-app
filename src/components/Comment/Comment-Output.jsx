@@ -35,7 +35,7 @@ function CommentOutput({ item }) {
           ))
         ) : (
           <div className={style.outPutNone}>
-            <p>작성된 댓글이 없습니다</p>
+            <p>댓글이 없습니다</p>
           </div>
         )}
       </ul>

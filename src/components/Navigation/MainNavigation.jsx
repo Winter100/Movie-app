@@ -29,6 +29,14 @@ function MainNavigation() {
             가입
           </NavLink>
         </li>
+        <li className={style.mainNavLi}>
+          <NavLink
+            to={"/login"}
+            className={({ isActive }) => (isActive ? style.active : "")}
+          >
+            로그인
+          </NavLink>
+        </li>
       </ul>
     </header>
   );

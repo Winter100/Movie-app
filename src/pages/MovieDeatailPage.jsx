@@ -30,7 +30,7 @@ export async function loader({ params }) {
   const movieId = params.id;
 
   const URL = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=ko-KR&append_to_response=videos,images`;
-  const COMMNET_URL = `${process.env.REACT_APP_FIREBASE_URL}${movieId}.json`;
+  const COMMNET_URL = `${process.env.REACT_APP_FIREBASE_URL}${movieId}.json?`;
 
   const response = await fetch(URL);
   const commentResponse = await fetch(COMMNET_URL);
@@ -67,10 +67,14 @@ export async function action({ request, params }) {
     date: `${today.year}-${today.month}-${today.day}`,
   };
 
+  const headers = {
+    "Content-Type": "application/json",
+  };
+
   const URL = `${process.env.REACT_APP_FIREBASE_URL}${id}.json`;
   const response = await fetch(URL, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: headers,
     body: JSON.stringify(commentData),
   });
 

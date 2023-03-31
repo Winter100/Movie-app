@@ -19,6 +19,7 @@ import SearchResultsPage, {
   loader as searchLoader,
 } from "./pages/SearchResultsPage";
 import AuthPage, { action as authAction } from "./pages/AuthPage";
+import LoginPage, { action as loginAction } from "./pages/LoginPage";
 
 function App() {
   const router = createBrowserRouter([
@@ -60,6 +61,11 @@ function App() {
           path: "/auth",
           element: <AuthPage />,
           action: authAction,
+        },
+        {
+          path: "/login",
+          element: <LoginPage />,
+          action: loginAction,
         },
       ],
     },

@@ -1,4 +1,4 @@
-import { redirect } from "react-router-dom";
+import { json, redirect } from "react-router-dom";
 import AuthForm from "../components/Auth/AuthForm";
 
 function AuthPage() {
@@ -10,22 +10,26 @@ export default AuthPage;
 export async function action({ request }) {
   const getValue = await request.formData();
 
+  const email = getValue.get("email");
+  const name = getValue.get("name");
+  const password = getValue.get("password");
+
   const URL = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${process.env.REACT_APP_FIREBASE_KEY}`;
   const response = await fetch(URL, {
     method: "POST",
-    body: JSON.stringify({
-      email: getValue.get("email"),
-      displayName: getValue.get("name"),
-      password: getValue.get("password"),
-      returnSecureToken: true,
-    }),
     headers: {
       "Content-Type": "application/json",
     },
+    body: JSON.stringify({
+      email: email,
+      name: name,
+      password: password,
+      returnSecureToken: true,
+    }),
   });
 
   if (!response.ok) {
-    console.log("에러");
+    throw json({ message: "가입 실패" }, { status: 500 });
   }
 
   // const data = await response.json();
