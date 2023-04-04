@@ -28,6 +28,10 @@ function MovieDetailItem({ item, setIsCommnet }) {
 
   const navigate = useNavigate();
 
+  const commentEventHandler = () => {
+    setIsCommnet((is) => !is);
+  };
+
   return (
     <>
       {isVideo && <VideoPlayer video={VideosKey} setIsVideo={setIsVideo} />}
@@ -51,9 +55,7 @@ function MovieDetailItem({ item, setIsCommnet }) {
             <p className={style.movieDetailOverView}>{overview}</p>
             <footer className={style.MovieDetailFooter}>
               <button onClick={() => navigate(-1)}>{"뒤로"}</button>
-              <button onClick={() => setIsCommnet((is) => !is)}>
-                {"댓글"}
-              </button>
+              <button onClick={commentEventHandler}>{"댓글"}</button>
             </footer>
           </div>
         </div>

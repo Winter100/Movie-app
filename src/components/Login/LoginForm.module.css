@@ -8,7 +8,7 @@
 .header {
   text-align: center;
   margin-top: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 0px;
   color: white;
 }
 
@@ -19,7 +19,7 @@
 .loginFormerrors {
   display: flex;
 
-  height: 50px;
+  height: 70px;
   color: red;
 
   justify-content: center;

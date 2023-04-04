@@ -10,6 +10,7 @@
   margin-top: 20px;
   margin-bottom: 20px;
   color: white;
+  margin-bottom: 0px;
 }
 
 .autmDiv {
@@ -20,13 +21,18 @@
 }
 
 .loginFormerrors {
-  display: flex;
+  display: grid;
 
-  height: 50px;
+  height: 70px;
   color: red;
 
+  font-size: 0.8rem;
   justify-content: center;
   align-items: center;
+}
+
+.authFormInput {
+  color: red;
 }
 
 @media (max-width: 1024px) {

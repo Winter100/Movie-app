@@ -1,5 +1,6 @@
 import { json, redirect } from "react-router-dom";
 import LoginForm from "../components/Login/LoginForm";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 function LoginPage() {
   return <LoginForm />;
@@ -27,27 +28,40 @@ export async function action({ request }) {
     return errors;
   }
 
-  const loginURL = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${process.env.REACT_APP_FIREBASE_KEY}`;
+  const auth = getAuth();
+  signInWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      // Signed in
+      const user = userCredential.user;
+      console.log("로그인성공", user);
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log("실패", errorCode, errorMessage);
+    });
 
-  const response = await fetch(loginURL, {
-    method: "POST",
-    body: JSON.stringify({
-      email: email,
-      password: password,
-      returnSecureToken: true,
-    }),
-  });
+  // const loginURL = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${process.env.REACT_APP_FIREBASE_KEY}`;
 
-  if (response.status === 400) {
-    return response;
-  }
+  // const response = await fetch(loginURL, {
+  //   method: "POST",
+  //   body: JSON.stringify({
+  //     email: email,
+  //     password: password,
+  //     returnSecureToken: true,
+  //   }),
+  // });
 
-  if (!response.ok) {
-    throw json({ message: "로그인에 실패하였습니다" }, { status: 500 });
-  }
+  // if (response.status === 400) {
+  //   return response;
+  // }
 
-  const res = await response.json();
-  console.log("성공", res);
+  // if (!response.ok) {
+  //   throw json({ message: "로그인에 실패하였습니다" }, { status: 500 });
+  // }
+
+  // const res = await response.json();
+  // console.log("성공", res);
 
   return redirect("/");
 }
