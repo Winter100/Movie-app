@@ -1,4 +1,4 @@
-import { json, redirect } from "react-router-dom";
+import { redirect } from "react-router-dom";
 import AuthForm from "../components/Auth/AuthForm";
 import {
   getAuth,
@@ -39,21 +39,24 @@ export async function action({ request }) {
   }
 
   const auth = getAuth();
-  const response = await createUserWithEmailAndPassword(auth, email, password);
+  await createUserWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      // Signed in
+      const user = userCredential.user;
+      console.log("가입성공", user);
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log("errorCode:", errorCode);
+      console.log("errorMessage:", errorMessage);
+    });
+
   await updateProfile(auth.currentUser, {
     displayName: displayName,
-  });
-  console.log("response", response);
-  // .then((userCredential) => {
-  //   const user = userCredential.user;
-  //   console.log("in", user);
-  // })
-  // .catch((error) => {
-  //   console.log(error);
-  //   throw json({ message: "가입 실패" }, { status: 500 });
-  // });
-
-  // // const data = await response.json();
+  })
+    .then(() => {})
+    .catch(() => {});
 
   return redirect("/");
 }

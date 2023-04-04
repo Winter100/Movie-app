@@ -1,0 +1,54 @@
+.dropDownDiv {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(20, 20, 20);
+  width: 15%;
+  height: 100vh;
+}
+.dropDownBtn {
+  margin-top: 10px;
+  text-align: right;
+}
+.dropDownBtn button {
+  border: none;
+  font-size: 2rem;
+  background-color: rgba(20, 20, 20);
+  color: white;
+}
+
+.dropDownOut {
+  margin-top: 10%;
+  text-align: center;
+  color: white;
+}
+
+.dropDownsection {
+  margin: 30%;
+}
+
+.dropDownBody {
+  font-weight: 600;
+}
+.dropDownBody li {
+  margin-top: 25%;
+}
+
+.dropDownBody a:link {
+  color: white;
+}
+
+.dropDownBody a:visited {
+  color: white;
+}
+
+.dropDownBody a:hover {
+  color: blanchedalmond;
+}
+
+.dropDownBody a.active {
+  font-size: 1rem;
+  color: blanchedalmond;
+}

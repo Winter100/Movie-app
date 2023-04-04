@@ -4,14 +4,15 @@
 
 .searchDiv {
   display: flex;
-  align-items: center;
-  justify-content: center;
   margin: auto;
+  justify-content: center;
+  align-items: center;
 }
+
 .searchInput {
   background-color: black;
-  width: 300px;
-  height: 29px;
+  width: 250px;
+  height: 30px;
   padding: 3px;
   color: white;
   font-size: 0.5rem;

@@ -1,4 +1,4 @@
-import { Form, useActionData } from "react-router-dom";
+import { Form, Link, useActionData } from "react-router-dom";
 import style from "./LoginForm.module.css";
 function LoginForm() {
   const errors = useActionData();
@@ -40,9 +40,16 @@ function LoginForm() {
           />
           <label htmlFor="password">비밀번호</label>
         </div>
-        <button type="submit" className="btn btn-primary btn-lg">
-          로그인
-        </button>
+        <div>
+          <button type="submit" className="btn btn-primary btn-lg">
+            로그인
+          </button>
+          <Link to={"/auth"}>
+            <button type="submit" className="btn btn-primary btn-lg">
+              회원가입
+            </button>
+          </Link>
+        </div>
       </Form>
     </section>
   );
