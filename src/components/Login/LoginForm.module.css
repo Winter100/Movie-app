@@ -25,6 +25,10 @@
   justify-content: center;
   align-items: center;
 }
+.loginBtnDiv {
+  display: flex;
+  justify-content: space-evenly;
+}
 
 @media (max-width: 1024px) {
   .auth {

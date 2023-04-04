@@ -35,6 +35,11 @@
   color: red;
 }
 
+.authFormBtnDiv {
+  display: flex;
+  justify-content: center;
+}
+
 @media (max-width: 1024px) {
   .auth {
     width: 60%;

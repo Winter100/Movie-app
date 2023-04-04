@@ -123,13 +123,15 @@ function AuthForm() {
               {password2ValueIsValid ? "비밀번호 확인" : "비밀번호가 다릅니다"}
             </label>
           </div>
-          <button
-            disabled={!buttonDisabled}
-            type="submit"
-            className="btn btn-primary btn-lg"
-          >
-            {!isLoadding ? "가입" : "가입중..."}
-          </button>
+          <div className={style.authFormBtnDiv}>
+            <button
+              disabled={!buttonDisabled}
+              type="submit"
+              className="btn btn-primary btn-lg"
+            >
+              {!isLoadding ? "가입" : "가입중..."}
+            </button>
+          </div>
         </Form>
       )}
     </section>

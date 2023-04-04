@@ -33,35 +33,13 @@ export async function action({ request }) {
     .then((userCredential) => {
       // Signed in
       const user = userCredential.user;
-      console.log("로그인성공", user);
+      localStorage.setItem("token", user.accessToken);
     })
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
       console.log("실패", errorCode, errorMessage);
     });
-
-  // const loginURL = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${process.env.REACT_APP_FIREBASE_KEY}`;
-
-  // const response = await fetch(loginURL, {
-  //   method: "POST",
-  //   body: JSON.stringify({
-  //     email: email,
-  //     password: password,
-  //     returnSecureToken: true,
-  //   }),
-  // });
-
-  // if (response.status === 400) {
-  //   return response;
-  // }
-
-  // if (!response.ok) {
-  //   throw json({ message: "로그인에 실패하였습니다" }, { status: 500 });
-  // }
-
-  // const res = await response.json();
-  // console.log("성공", res);
 
   return redirect("/");
 }

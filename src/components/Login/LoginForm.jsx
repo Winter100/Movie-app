@@ -40,7 +40,7 @@ function LoginForm() {
           />
           <label htmlFor="password">비밀번호</label>
         </div>
-        <div>
+        <div className={style.loginBtnDiv}>
           <button type="submit" className="btn btn-primary btn-lg">
             로그인
           </button>

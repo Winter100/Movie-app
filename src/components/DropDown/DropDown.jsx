@@ -1,6 +1,11 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, Form } from "react-router-dom";
 import style from "./DropDown.module.css";
+import { getAuthToken } from "../../util/auth-util";
+import { useEffect } from "react";
 function DropDown({ setDropDownMenu }) {
+  const token = getAuthToken();
+  useEffect(() => {}, []);
+
   return (
     <div className={style.dropDownDiv}>
       <div className={style.dropDownBtn}>
@@ -17,7 +22,7 @@ function DropDown({ setDropDownMenu }) {
                 to={"/login"}
                 className={({ isActive }) => (isActive ? style.active : "")}
               >
-                로그인
+                홈
               </NavLink>
             </li>
             <li>
@@ -25,11 +30,50 @@ function DropDown({ setDropDownMenu }) {
                 to={"/auth"}
                 className={({ isActive }) => (isActive ? style.active : "")}
               >
-                회원가입
+                영화
               </NavLink>
             </li>
           </ul>
         </section>
+        <footer className={style.dropDownFooter}>
+          <ul className={style.dropDownBody}>
+            {token ? (
+              <li>
+                <NavLink
+                  to={"/login"}
+                  className={({ isActive }) => (isActive ? style.active : "")}
+                >
+                  My
+                </NavLink>
+              </li>
+            ) : (
+              <li>
+                <NavLink
+                  to={"/login"}
+                  className={({ isActive }) => (isActive ? style.active : "")}
+                >
+                  로그인
+                </NavLink>
+              </li>
+            )}
+            {token ? (
+              <li>
+                <Form action={"/logout"} meth="post">
+                  <button>Logout</button>
+                </Form>
+              </li>
+            ) : (
+              <li>
+                <NavLink
+                  to={"/auth"}
+                  className={({ isActive }) => (isActive ? style.active : "")}
+                >
+                  회원가입
+                </NavLink>
+              </li>
+            )}
+          </ul>
+        </footer>
       </div>
     </div>
   );

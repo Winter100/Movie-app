@@ -20,6 +20,8 @@ import SearchResultsPage, {
 } from "./pages/SearchResultsPage";
 import AuthPage, { action as authAction } from "./pages/AuthPage";
 import LoginPage, { action as loginAction } from "./pages/LoginPage";
+import { action as logOutAction } from "./pages/LogoutPage";
+import { tokenLoader } from "./util/auth-util";
 
 function App() {
   const router = createBrowserRouter([
@@ -27,6 +29,7 @@ function App() {
       path: "/",
       element: <LootLayout />,
       errorElement: <ErrorPage />,
+      loader: tokenLoader,
       children: [
         { index: true, element: <HomePage />, loader: homeLoader },
         {
@@ -67,6 +70,7 @@ function App() {
           element: <LoginPage />,
           action: loginAction,
         },
+        { path: "/logout", action: logOutAction },
       ],
     },
   ]);
