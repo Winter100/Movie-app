@@ -51,6 +51,10 @@
   font-size: 0.8rem;
   text-align: center;
 
+  margin: auto;
+  width: 80%;
+  border-bottom: 2px solid white;
+
   margin-bottom: 2%;
 }
 .commentInputNeedLogin p {
