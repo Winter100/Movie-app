@@ -1,24 +1,44 @@
 import { Form, Link, useActionData } from "react-router-dom";
 import style from "./LoginForm.module.css";
+import useInput from "../../hooks/use-input";
 function LoginForm() {
   const errors = useActionData();
 
-  let errMessage = "";
+  const {
+    onChangeValue: emailOnChangeValue,
+    onBlur: emailOnBlur,
+    itIs: emailItIs,
+    valueIsValid: emailValueIsValid,
+  } = useInput((value) => value.trim().includes("@") && value.trim() !== "");
+  const {
+    onChangeValue: passwordOnChangeValue,
+    onBlur: passwordOnBlur,
+    itIs: passwordItIs,
+    valueIsValid: passwordValueIsValid,
+  } = useInput((value) => value.trim().length >= 6);
 
-  if (errors?.error.message === "EMAIL_NOT_FOUND") {
-    errMessage = "이메일을 찾을 수 없습니다";
-  }
-  if (errors?.error.message === "INVALID_PASSWORD") {
-    errMessage = "비밀번호가 틀렸습니다";
+  const emailClassName = emailItIs ? style.authFormInput : "";
+  const passwordClassName = passwordItIs ? style.authFormInput : "";
+
+  let buttonDisabled = false;
+
+  if (emailValueIsValid && passwordValueIsValid) {
+    buttonDisabled = true;
   }
 
   return (
     <section className={style.auth}>
       <h2 className={style.header}>로그인</h2>
-      <div className={style.loginFormerrors}>{errMessage}</div>
+      <div className={style.loginFormerrors}>
+        {errors?.email && <span>{errors.email}</span>}
+        {errors?.password && <span>{errors.password}</span>}
+        {errors?.message && <span>{errors.message}</span>}
+      </div>
       <Form method="POST">
         <div className="form-floating mb-3">
           <input
+            onChange={emailOnChangeValue}
+            onBlur={emailOnBlur}
             type="email"
             className="form-control"
             id="email"
@@ -26,10 +46,14 @@ function LoginForm() {
             name="email"
             required
           />
-          <label htmlFor="email">E-mail</label>
+          <label htmlFor="email" className={emailClassName}>
+            {!emailItIs ? "E-mail" : "E-mail은 @가 포함되어야 합니다"}{" "}
+          </label>
         </div>
         <div className="form-floating mb-3">
           <input
+            onChange={passwordOnChangeValue}
+            onBlur={passwordOnBlur}
             type="password"
             className="form-control"
             id="password"
@@ -38,10 +62,16 @@ function LoginForm() {
             minLength="6"
             required
           />
-          <label htmlFor="password">비밀번호</label>
+          <label htmlFor="password" className={passwordClassName}>
+            {!passwordItIs ? "비밀번호" : "비밀번호는 6자 이상입니다"}
+          </label>
         </div>
         <div className={style.loginBtnDiv}>
-          <button type="submit" className="btn btn-primary btn-lg">
+          <button
+            disabled={!buttonDisabled}
+            type="submit"
+            className="btn btn-primary btn-lg"
+          >
             로그인
           </button>
           <Link to={"/auth"}>

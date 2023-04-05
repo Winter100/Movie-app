@@ -11,6 +11,10 @@
   animation-name: openDropDownMenu;
   animation-duration: 0.5s;
 }
+
+.dropDownsection > ul > li {
+  margin-top: 13%;
+}
 .dropDownBtn {
   margin-top: 10px;
   text-align: right;
@@ -35,7 +39,12 @@
 }
 
 .dropDownBody li {
-  margin: 8%;
+  margin: 0px;
+}
+
+.dropDownBody form:hover {
+  cursor: pointer;
+  color: blanchedalmond;
 }
 
 .dropDownBody a:link {

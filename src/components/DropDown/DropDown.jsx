@@ -1,10 +1,11 @@
-import { NavLink, Form } from "react-router-dom";
+import { Form, NavLink, useSubmit } from "react-router-dom";
 import style from "./DropDown.module.css";
 import { getAuthToken } from "../../util/auth-util";
-import { useEffect } from "react";
+
 function DropDown({ setDropDownMenu }) {
   const token = getAuthToken();
-  useEffect(() => {}, []);
+
+  const submit = useSubmit();
 
   return (
     <div className={style.dropDownDiv}>
@@ -58,8 +59,12 @@ function DropDown({ setDropDownMenu }) {
             )}
             {token ? (
               <li>
-                <Form action={"/logout"} meth="post">
-                  <button>Logout</button>
+                <Form
+                  onClick={() =>
+                    submit(null, { method: "post", action: "/logout" })
+                  }
+                >
+                  Logout
                 </Form>
               </li>
             ) : (

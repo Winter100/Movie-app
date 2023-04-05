@@ -1,5 +1,5 @@
 export const getAuthToken = () => {
-  const token = localStorage.getItem("token");
+  const token = localStorage.getItem("movie-token");
 
   if (!token) {
     return null;
@@ -8,8 +8,18 @@ export const getAuthToken = () => {
   return token;
 };
 
+export const getAuthName = () => {
+  const name = localStorage.getItem("movie-name");
+
+  if (!name) {
+    return null;
+  }
+  return name;
+};
+
 export const logout = () => {
-  localStorage.removeItem("token");
+  localStorage.removeItem("movie-token");
+  localStorage.removeItem("movie-name");
 };
 
 export function tokenLoader() {

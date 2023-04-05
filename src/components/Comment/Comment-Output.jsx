@@ -7,9 +7,9 @@ function CommentOutput({ item }) {
       commentList.push({
         key: key,
         name: item[key].name,
-        value: item[key].value,
+        content: item[key].content,
         password: item[key].password,
-        date: item[key].date,
+        createdAt: item[key].createdAt,
       });
     }
   } else {
@@ -26,10 +26,10 @@ function CommentOutput({ item }) {
                 <span>{item.name}</span>
               </div>
               <div>
-                <span className={style.outPutValue}>{item.value}</span>
+                <span className={style.outPutValue}>{item.content}</span>
               </div>
               <div className={style.outPutDate}>
-                <span>{item.date}</span>
+                <span>{item.createdAt}</span>
               </div>
             </li>
           ))

@@ -33,7 +33,6 @@ export async function action({ request }) {
     errors.password = "비밀번호는 6자 이상이어야합니다";
   }
 
-  // return data if we have errors
   if (Object.keys(errors).length) {
     return errors;
   }
@@ -41,15 +40,13 @@ export async function action({ request }) {
   const auth = getAuth();
   await createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
-      // Signed in
-      const user = userCredential.user;
-      console.log("가입성공", user);
+      // const user = userCredential.user;
     })
     .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.log("errorCode:", errorCode);
-      console.log("errorMessage:", errorMessage);
+      // const errorCode = error.code;
+      // const errorMessage = error.message;
+      // console.log("errorCode:", errorCode);
+      // console.log("errorMessage:", errorMessage);
     });
 
   await updateProfile(auth.currentUser, {

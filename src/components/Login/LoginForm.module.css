@@ -30,6 +30,10 @@
   justify-content: space-evenly;
 }
 
+.authFormInput {
+  color: red;
+}
+
 @media (max-width: 1024px) {
   .auth {
     width: 60%;

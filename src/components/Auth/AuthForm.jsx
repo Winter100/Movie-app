@@ -54,7 +54,7 @@ function AuthForm() {
       <h2 className={style.header}>회원가입</h2>
       <div className={style.loginFormerrors}>
         {errors?.email && <span>{errors.email}</span>}
-        {errors?.password && <span>{errors.displayName}</span>}
+        {errors?.displayName && <span>{errors.displayName}</span>}
         {errors?.password && <span>{errors.password}</span>}
       </div>
       {isLoadding ? (

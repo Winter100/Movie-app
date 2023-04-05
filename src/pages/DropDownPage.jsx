@@ -1,12 +1,8 @@
 import { useState } from "react";
 import DropDown from "../components/DropDown/DropDown";
-import { getAuthToken } from "../util/auth-util";
 
 function DropDownPage() {
   const [dropDownMenu, setDropDownMenu] = useState(false);
-
-  const token = getAuthToken();
-  console.log(token);
 
   return (
     <div>

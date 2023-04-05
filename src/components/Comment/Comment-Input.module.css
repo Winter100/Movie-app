@@ -46,6 +46,32 @@
   border: none;
 }
 
+.commentInputNeedLogin {
+  color: white;
+  font-size: 0.8rem;
+  text-align: center;
+
+  margin-bottom: 2%;
+}
+.commentInputNeedLogin p {
+  margin: 0px;
+}
+
+.commentInputNeedLogin a:link {
+  color: rgb(155, 146, 255);
+  font-size: 1.2rem;
+}
+
+.commentInputNeedLogin a:visited {
+  color: rgb(155, 146, 255);
+  font-size: 1.2rem;
+}
+
+.commentInputNeedLogin a:hover {
+  color: blanchedalmond;
+  font-weight: 600;
+}
+
 @media (min-width: 768px) {
   .commentOutborder {
     padding: 0px;

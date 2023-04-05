@@ -4,6 +4,9 @@ import CommentInput from "../components/Comment/Comment-Input";
 import CommentOutPut from "../components/Comment/Comment-Output";
 import MovieDetailItem from "../components/Movie/MovieDetail-Item";
 
+import { getAuth, getIdToken } from "firebase/auth";
+import { getDatabase, ref, push } from "firebase/database";
+
 function MovieDetailPage() {
   const { data, comment } = useLoaderData();
   const [isCommnet, setIsCommnet] = useState(false);
@@ -11,7 +14,6 @@ function MovieDetailPage() {
   return (
     <>
       <MovieDetailItem item={data} setIsCommnet={setIsCommnet} />
-
       {isCommnet ? (
         <>
           <CommentOutPut item={comment} />
@@ -30,10 +32,16 @@ export async function loader({ params }) {
   const movieId = params.id;
 
   const URL = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=ko-KR&append_to_response=videos,images`;
-  const COMMNET_URL = `${process.env.REACT_APP_FIREBASE_URL}${movieId}.json?`;
+  const COMMNET_URL = `${process.env.REACT_APP_FIREBASE_URL}${movieId}/comments.json`;
+
+  const headers = {
+    "Content-Type": "application/json",
+  };
 
   const response = await fetch(URL);
-  const commentResponse = await fetch(COMMNET_URL);
+  const commentResponse = await fetch(COMMNET_URL, {
+    headers: headers,
+  });
 
   if (!response.ok) {
     throw json({ message: "다시 시도 해주세요" }, { status: 500 });
@@ -51,8 +59,11 @@ export async function loader({ params }) {
 }
 
 export async function action({ request, params }) {
-  const id = params.id;
+  const movieId = params.id;
   const getValue = await request.formData();
+
+  const auth = getAuth();
+  const db = getDatabase();
 
   const today = {
     year: new Date().getFullYear(),
@@ -60,27 +71,29 @@ export async function action({ request, params }) {
     day: new Date().getDate(),
   };
 
+  const { currentUser } = auth;
+
+  if (!currentUser.accessToken) {
+    return null;
+  }
+
+  const token = await getIdToken(currentUser, true);
+
   const commentData = {
     name: getValue.get("name"),
     password: getValue.get("password"),
-    value: getValue.get("value"),
-    date: `${today.year}-${today.month}-${today.day}`,
+    content: getValue.get("value"),
+    createdAt: `${today.year}-${today.month}-${today.day}`,
+    userId: auth.currentUser.uid,
   };
 
-  const headers = {
-    "Content-Type": "application/json",
-  };
+  // "comments" 컬렉션에 새로운 댓글 추가
+  const commentsRef = ref(db, `comment/${movieId}/comments`);
+  await push(commentsRef, commentData, token)
+    .then((res) => {})
+    .catch((err) => {
+      console.log("5", err);
+    });
 
-  const URL = `${process.env.REACT_APP_FIREBASE_URL}${id}.json`;
-  const response = await fetch(URL, {
-    method: "POST",
-    headers: headers,
-    body: JSON.stringify(commentData),
-  });
-
-  if (!response.ok) {
-    throw json({ message: "저장 실패" }, { status: 500 });
-  }
-
-  return redirect(`/movies/detail/${id}`);
+  return redirect(`/movies/detail/${movieId}`);
 }
