@@ -41,7 +41,7 @@ function DropDown({ setDropDownMenu }) {
             {token ? (
               <li>
                 <NavLink
-                  to={"/login"}
+                  to={"/mypage"}
                   className={({ isActive }) => (isActive ? style.active : "")}
                 >
                   My

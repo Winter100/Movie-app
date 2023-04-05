@@ -1,0 +1,19 @@
+.btn {
+  width: 150px;
+  height: 100%;
+  position: fixed;
+  top: 0px;
+  left: -202px;
+  z-index: 10;
+  border: 1px solid #c9c9c9;
+  background-color: white;
+  text-align: center;
+  font-weight: bold;
+  transition: All 0.2s ease;
+  -webkit-transition: All 0.2s ease;
+  -moz-transition: All 0.2s ease;
+  -o-transition: All 0.2s ease;
+  padding-top: 50px;
+  padding-left: 0px;
+  padding-right: 40px;
+}

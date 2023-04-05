@@ -8,7 +8,9 @@ function LootLayout() {
   return (
     <>
       <SearchBar />
-      <DropDownPage />
+      <div className={style.mainNavigatDropDown}>
+        <DropDownPage />
+      </div>
       <MainNavigation />
       <main className={style.mainNavigat}>
         <Outlet />

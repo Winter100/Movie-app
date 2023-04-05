@@ -22,6 +22,7 @@ import AuthPage, { action as authAction } from "./pages/AuthPage";
 import LoginPage, { action as loginAction } from "./pages/LoginPage";
 import { action as logOutAction } from "./pages/LogoutPage";
 import { tokenLoader } from "./util/auth-util";
+import MyPage from "./pages/MyPage";
 
 function App() {
   const router = createBrowserRouter([
@@ -69,6 +70,10 @@ function App() {
           path: "/login",
           element: <LoginPage />,
           action: loginAction,
+        },
+        {
+          path: "/myPage",
+          element: <MyPage />,
         },
         { path: "logout", action: logOutAction },
       ],

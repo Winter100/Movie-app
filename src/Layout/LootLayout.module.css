@@ -1,3 +1,7 @@
 .mainNavigat {
   margin: auto;
 }
+
+.mainNavigatDropDown {
+  position: fixed;
+}

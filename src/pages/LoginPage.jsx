@@ -21,7 +21,6 @@ export async function action({ request }) {
     .then((userCredential) => {
       // Signed in
       const user = userCredential.user;
-      console.group(user);
       localStorage.setItem("movie-token", user.accessToken);
       localStorage.setItem("movie-name", user.displayName);
     })
