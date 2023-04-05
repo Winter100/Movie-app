@@ -7,8 +7,7 @@ function DropDownPage() {
 
   return (
     <div>
-      <Btn title={"메뉴"} />
-      <button onClick={() => setDropDownMenu((is) => !is)}>메뉴</button>
+      <Btn setDropDownMenu={setDropDownMenu} />
       {dropDownMenu && <DropDown setDropDownMenu={setDropDownMenu} />}
     </div>
   );

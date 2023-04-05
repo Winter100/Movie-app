@@ -9,7 +9,7 @@
   height: 100vh;
 
   animation-name: openDropDownMenu;
-  animation-duration: 0.5s;
+  animation-duration: 0.2s;
 }
 
 .dropDownsection > ul > li {
