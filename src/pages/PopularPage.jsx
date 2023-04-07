@@ -13,7 +13,7 @@ function PopularPage() {
 
   useEffect(() => {
     setPage(paramsPage);
-  }, [paramsPage, page]);
+  }, [paramsPage]);
 
   const handlePageChange = (page) => {
     setSearchParams(`page=${page}`);

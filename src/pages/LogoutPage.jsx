@@ -3,6 +3,7 @@ import { getAuth, signOut } from "firebase/auth";
 
 export async function action() {
   localStorage.removeItem("movie-token");
+  localStorage.removeItem("expiration");
   localStorage.removeItem("movie-name");
 
   try {

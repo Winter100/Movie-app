@@ -13,8 +13,11 @@ function ComingPage() {
   const data = useLoaderData();
 
   useEffect(() => {
+    if (!paramsPage) {
+      setSearchParams(`page=${1}`);
+    }
     setPage(paramsPage);
-  }, [paramsPage, page]);
+  }, [paramsPage, setSearchParams]);
 
   const handlePageChange = (page) => {
     setSearchParams(`page=${page}`);

@@ -70,12 +70,12 @@
   }
 }
 
-@media (max-width: 412px) {
+@media (max-width: 550px) {
   .menuTrigger {
     margin-left: 10%;
     transform: translateY(-100%) translateX(0%);
     position: relative;
-    width: 37px;
+    width: 33px;
     height: 35px;
   }
 }

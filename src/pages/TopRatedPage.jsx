@@ -12,12 +12,9 @@ function TopRatedPage() {
 
   useEffect(() => {
     setPage(paramsPage);
-  }, [paramsPage, page]);
-
-  // const navigate = useNavigate();
+  }, [paramsPage]);
 
   const handlePageChange = (page) => {
-    // navigate(`/movies?page=${page}`);
     setSearchParams(`page=${page}`);
     setPage(page);
   };

@@ -1,9 +1,10 @@
 import { Form, NavLink, useSubmit } from "react-router-dom";
 import style from "./DropDown.module.css";
-import { getAuthToken } from "../../util/auth-util";
+import { getAuthName, getAuthToken } from "../../util/auth-util";
 
 function DropDown({ setDropDownMenu }) {
   const token = getAuthToken();
+  const name = getAuthName();
 
   const submit = useSubmit();
 
@@ -15,12 +16,13 @@ function DropDown({ setDropDownMenu }) {
       <div className={style.dropDownOut}>
         <header className={style.dropDownHeader}>
           <h2>메뉴</h2>
+          {name && <span>{`환영합니다 ${name}님`}</span>}
         </header>
         <section className={style.dropDownsection}>
           <ul className={style.dropDownBody}>
             <li>
               <NavLink
-                to={"/login"}
+                to={"/"}
                 className={({ isActive }) => (isActive ? style.active : "")}
               >
                 홈
@@ -28,12 +30,22 @@ function DropDown({ setDropDownMenu }) {
             </li>
             <li>
               <NavLink
-                to={"/auth"}
+                to={"/movies"}
                 className={({ isActive }) => (isActive ? style.active : "")}
               >
                 영화
               </NavLink>
             </li>
+            {token && (
+              <li>
+                <NavLink
+                  to={"/wishlist"}
+                  className={({ isActive }) => (isActive ? style.active : "")}
+                >
+                  찜 목록
+                </NavLink>
+              </li>
+            )}
           </ul>
         </section>
         <footer className={style.dropDownFooter}>

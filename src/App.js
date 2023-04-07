@@ -21,8 +21,12 @@ import SearchResultsPage, {
 import AuthPage, { action as authAction } from "./pages/AuthPage";
 import LoginPage, { action as loginAction } from "./pages/LoginPage";
 import { action as logOutAction } from "./pages/LogoutPage";
-import { tokenLoader } from "./util/auth-util";
-import MyPage from "./pages/MyPage";
+import { tokenLoader, checkAuthLoader } from "./util/auth-util";
+import MyPage, {
+  loader as mypageLoader,
+  action as mypageAction,
+} from "./pages/MyPage";
+import WishListPage from "./pages/WishListPage";
 
 function App() {
   const router = createBrowserRouter([
@@ -74,6 +78,13 @@ function App() {
         {
           path: "/myPage",
           element: <MyPage />,
+          loader: mypageLoader,
+          action: mypageAction,
+        },
+        {
+          path: "/wishlist",
+          element: <WishListPage />,
+          loader: checkAuthLoader,
         },
         { path: "logout", action: logOutAction },
       ],

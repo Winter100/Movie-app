@@ -19,10 +19,13 @@ export async function action({ request }) {
   const auth = getAuth();
   await signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
-      // Signed in
       const user = userCredential.user;
       localStorage.setItem("movie-token", user.accessToken);
       localStorage.setItem("movie-name", user.displayName);
+
+      const expiration = new Date();
+      expiration.setHours(expiration.getHours() + 1);
+      localStorage.setItem("expiration", expiration.toISOString());
     })
     .catch((error) => {
       if (error.code === "auth/wrong-password") {
