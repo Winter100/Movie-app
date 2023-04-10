@@ -1,27 +1,28 @@
 import { Form, Link, useActionData } from "react-router-dom";
 import style from "./Comment-Input.module.css";
 import { getAuthName, getAuthToken } from "../../util/auth-util";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 
 function Comment({ met }) {
   const token = getAuthToken();
-  const displayName = getAuthName();
+  // const displayName = getAuthName();
+  const displayName = useMemo(() => getAuthName() || "", []);
 
   const errors = useActionData();
 
   const [inputValue, setInputValue] = useState("");
 
-  const clearInput = () => {
+  const handleSubmit = () => {
     setInputValue("");
   };
 
   return (
     <>
       {token ? (
-        <Form method={met} onSubmit={clearInput}>
+        <Form method={met} onSubmit={handleSubmit}>
           <div className={style.commentOutborder}>
             <div className={style.commentInputName}>
-              <p>{displayName ? displayName : ""}</p>
+              <p>{displayName}</p>
             </div>
             <div className={style.commentInputValue}>
               <textarea
