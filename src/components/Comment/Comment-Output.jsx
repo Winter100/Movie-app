@@ -1,5 +1,7 @@
+import { getAuth } from "firebase/auth";
 import style from "./Comment-Output.module.css";
-function CommentOutput({ item }) {
+import { Form } from "react-router-dom";
+function CommentOutput({ item, met }) {
   let commentList = [];
 
   if (item) {
@@ -8,13 +10,16 @@ function CommentOutput({ item }) {
         key: key,
         name: item[key].name,
         content: item[key].content,
-        password: item[key].password,
         createdAt: item[key].createdAt,
+        userId: item[key].userId,
       });
     }
   } else {
     commentList = "";
   }
+
+  const auth = getAuth();
+  const { currentUser } = auth;
 
   return (
     <div className={style.commentOutborder}>
@@ -26,10 +31,20 @@ function CommentOutput({ item }) {
                 <span>{item.name}</span>
               </div>
               <div>
-                <span className={style.outPutValue}>{item.content}</span>
+                <span>{item.content}</span>
               </div>
               <div className={style.outPutDate}>
                 <span>{item.createdAt}</span>
+                <div>
+                  <Form method={met}>
+                    {currentUser?.uid === item.userId ? (
+                      <button className={style.commentOutX}>X</button>
+                    ) : (
+                      ""
+                    )}
+                    <input type="hidden" name="key" defaultValue={item.key} />
+                  </Form>
+                </div>
               </div>
             </li>
           ))

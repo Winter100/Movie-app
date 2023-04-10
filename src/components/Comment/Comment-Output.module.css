@@ -1,5 +1,5 @@
 .commentOutborder {
-  padding: 3px;
+  padding: 2px;
 
   font-size: 0.8rem;
   width: 80%;
@@ -7,12 +7,11 @@
   border-bottom: 2px solid white;
   margin: auto;
   color: white;
-  margin-top: 2%;
+  margin-top: 1%;
 }
-
 .commentLi {
   display: grid;
-  grid-template-columns: 20% 65% 15%;
+  grid-template-columns: 20% 60% 20%;
   border-bottom: 1px solid beige;
   padding: 0.3%;
 }
@@ -23,11 +22,23 @@
 
 .outPutDate {
   text-align: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 .outPutNone {
   margin-top: 13px;
   text-align: center;
   font-size: 1.2rem;
+}
+
+.commentOutX {
+  color: bisque;
+  background-color: transparent !important;
+  background-image: none !important;
+  border-color: transparent;
+  border: none;
+
+  color: bisque;
 }
 
 @media (max-width: 768px) {
@@ -36,6 +47,6 @@
   }
 
   .commentLi {
-    grid-template-columns: 30% 50% 20%;
+    grid-template-columns: 15% 50% 35%;
   }
 }

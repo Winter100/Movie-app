@@ -5,7 +5,7 @@ import CommentOutPut from "../components/Comment/Comment-Output";
 import MovieDetailItem from "../components/Movie/MovieDetail-Item";
 
 import { getAuth, getIdToken } from "firebase/auth";
-import { getDatabase, ref, push } from "firebase/database";
+import { getDatabase, ref, push, remove } from "firebase/database";
 
 function MovieDetailPage() {
   const { data, comment } = useLoaderData();
@@ -16,8 +16,8 @@ function MovieDetailPage() {
       <MovieDetailItem item={data} setIsCommnet={setIsCommnet} />
       {isCommnet ? (
         <>
-          <CommentOutPut item={comment} />
-          <CommentInput setIsCommnet={setIsCommnet} />
+          <CommentOutPut item={comment} met="DELETE" />
+          <CommentInput setIsCommnet={setIsCommnet} met="PUT" />
         </>
       ) : (
         ""
@@ -60,16 +60,11 @@ export async function loader({ params }) {
 
 export async function action({ request, params }) {
   const movieId = params.id;
+  const method = request.method;
   const getValue = await request.formData();
 
   const auth = getAuth();
   const db = getDatabase();
-
-  const today = {
-    year: new Date().getFullYear(),
-    month: new Date().getMonth() + 1,
-    day: new Date().getDate(),
-  };
 
   const { currentUser } = auth;
 
@@ -79,21 +74,56 @@ export async function action({ request, params }) {
 
   const token = await getIdToken(currentUser, true);
 
-  const commentData = {
-    name: getValue.get("name"),
-    password: getValue.get("password"),
-    content: getValue.get("value"),
-    createdAt: `${today.year}-${today.month}-${today.day}`,
-    userId: auth.currentUser.uid,
-  };
+  // "comments" 컬렉션 댓글 삭제
+  if (method === "DELETE") {
+    const key = getValue.get("key");
+    const commentsDeleteRef = ref(db, `comment/${movieId}/comments/${key}`);
+
+    await remove(commentsDeleteRef, token)
+      .then((res) => {})
+      .catch((err) => {
+        return redirect(`/login`);
+      });
+
+    return redirect(`/movies/detail/${movieId}`);
+  }
 
   // "comments" 컬렉션에 새로운 댓글 추가
-  const commentsRef = ref(db, `comment/${movieId}/comments`);
-  await push(commentsRef, commentData, token)
-    .then((res) => {})
-    .catch((err) => {
-      console.log("5", err);
-    });
+  if (method === "PUT") {
+    const errors = {};
+    const content = getValue.get("value");
 
-  return redirect(`/movies/detail/${movieId}`);
+    if (content.length < 1) {
+      errors.content = "내용을 적어주세요!";
+    }
+
+    if (Object.keys(errors).length) {
+      return errors;
+    }
+
+    const commentsRef = ref(db, `comment/${movieId}/comments`);
+
+    const today = {
+      year: new Date().getFullYear(),
+      month: new Date().getMonth() + 1,
+      day: new Date().getDate(),
+    };
+
+    const commentData = {
+      name: currentUser.displayName,
+      content: getValue.get("value"),
+      createdAt: `${today.year}-${today.month}-${today.day}`,
+      userId: auth.currentUser.uid,
+    };
+
+    await push(commentsRef, commentData, token)
+      .then((res) => {})
+      .catch((err) => {
+        return redirect(`/login`);
+      });
+
+    return redirect(`/movies/detail/${movieId}`);
+  }
+
+  return redirect(`/`);
 }

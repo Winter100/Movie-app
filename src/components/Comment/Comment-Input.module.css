@@ -5,42 +5,41 @@
   margin: auto;
   background-color: rgb(177, 175, 175);
 
+  height: 80px;
+
   display: grid;
   grid-template-areas:
-    "inputName inputValue inputValue ."
-    "inputPassword inputValue inputValue inputButton2";
+    "inputName . . "
+    "inputValue inputValue inputButton2";
 }
 
 .commentInputName {
+  text-align: center;
   grid-area: inputName;
-  margin: auto;
+  margin-left: 10%;
 }
-.commentInputPassword {
-  grid-area: inputPassword;
-  margin: auto;
+.commentInputName p {
+  text-align: center;
+  margin: 0px;
 }
+
 .commentInputValue {
   width: 100%;
   grid-area: inputValue;
 }
 .commentInputButton {
   grid-area: inputButton2;
+  margin: 1%;
+}
+.commentInputButton button {
+  border: none;
 }
 
 /*input */
-.commentInputName input {
-  text-align: center;
-  width: 80px;
-  border: none;
-}
-.commentInputPassword input {
-  width: 80px;
-  text-align: center;
-  border: none;
-}
+
 .commentInputValue textarea {
   width: 100%;
-  height: 100%;
+  height: 55%;
   resize: none;
   padding: 1%;
   border: none;
