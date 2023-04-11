@@ -7,9 +7,9 @@ function WishListPage() {
   const data = useLoaderData();
 
   return (
-    <>
+    <div style={{ width: "85%", margin: "auto" }}>
       <MovieItem item={data} />;
-    </>
+    </div>
   );
 }
 

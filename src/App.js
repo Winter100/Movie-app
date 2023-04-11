@@ -82,7 +82,7 @@ function App() {
           action: mypageAction,
         },
         {
-          path: "/wishlist",
+          path: "wishlist",
           element: <WishListPage />,
           loader: wishListLoader,
         },

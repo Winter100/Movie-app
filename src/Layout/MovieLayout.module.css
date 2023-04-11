@@ -1,8 +1,6 @@
 .movielayoutMain {
   width: 80%;
-  padding: 5px;
-  border: 3px solid black;
-  border-radius: 10px;
+  padding: 2px;
   margin: auto;
 }
 
