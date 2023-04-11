@@ -22,6 +22,7 @@ export async function action({ request }) {
       const user = userCredential.user;
       localStorage.setItem("movie-token", user.accessToken);
       localStorage.setItem("movie-name", user.displayName);
+      localStorage.setItem("movie-uid", user.uid);
 
       const expiration = new Date();
       expiration.setHours(expiration.getHours() + 1);

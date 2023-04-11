@@ -1,13 +1,25 @@
 import VideoPlayer from "../Video/VideoPlayer";
+import React, { useEffect } from "react";
 
 import style from "./MovieDetail-item.module.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { addWishList } from "../../util/wish-util";
+import { getAuthToken } from "../../util/auth-util";
 
-function MovieDetailItem({ item, setIsCommnet }) {
+function MovieDetailItem({ item, setIsCommnet, itis }) {
   const imgbase = "https://image.tmdb.org/t/p/w300";
+  const token = getAuthToken();
 
   const [isVideo, setIsVideo] = useState(false);
+  const [iswish, setIsWish] = useState(false);
+
+  useEffect(() => {
+    if (itis) {
+      setIsWish(true);
+    }
+  }, [itis, setIsWish]);
+
   let VideosKey = item.videos;
 
   const title = item.title ? item.title : "타이틀 정보가 없습니다";
@@ -30,6 +42,12 @@ function MovieDetailItem({ item, setIsCommnet }) {
 
   const commentEventHandler = () => {
     setIsCommnet((is) => !is);
+  };
+
+  const addWishListHandler = async () => {
+    setIsWish((is) => !is);
+
+    addWishList(item, iswish);
   };
 
   return (
@@ -56,6 +74,13 @@ function MovieDetailItem({ item, setIsCommnet }) {
             <footer className={style.MovieDetailFooter}>
               <button onClick={() => navigate(-1)}>{"뒤로"}</button>
               <button onClick={commentEventHandler}>{"댓글"}</button>
+              {token && (
+                <div>
+                  <button onClick={addWishListHandler}>
+                    {iswish ? "♥" : "♡"}
+                  </button>
+                </div>
+              )}
             </footer>
           </div>
         </div>
@@ -64,4 +89,4 @@ function MovieDetailItem({ item, setIsCommnet }) {
   );
 }
 
-export default MovieDetailItem;
+export default React.memo(MovieDetailItem);

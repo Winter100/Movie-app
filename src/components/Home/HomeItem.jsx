@@ -1,21 +1,25 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { homeimg300, homeimg400 } from "../../util/url";
 import style from "./HomeItem.module.css";
 import { Link } from "react-router-dom";
+import React from "react";
+
 function HomeItem({ item }) {
   const [movie, setMovie] = useState(0);
   const [imgName, setimgName] = useState(true);
 
   const lengthMinOne = item.length - 1;
 
+  const intervalCallback = useCallback(() => {
+    setMovie((num) => num + 1);
+    setimgName((is) => !is);
+  }, [setMovie, setimgName]);
+
   useEffect(() => {
-    const remove = setInterval(() => {
-      setMovie((num) => num + 1);
-      setimgName((is) => !is);
-    }, 4000);
+    const remove = setInterval(intervalCallback, 4000);
 
     return () => clearInterval(remove);
-  }, [movie, imgName]);
+  }, [intervalCallback]);
 
   if (movie < 0) {
     return setMovie(lengthMinOne);
@@ -23,8 +27,6 @@ function HomeItem({ item }) {
   if (movie > lengthMinOne) {
     return setMovie(0);
   }
-
-  console.log(item);
 
   let leftNumber = item[movie - 1];
   let rightNumber = item[movie + 1];
@@ -82,4 +84,4 @@ function HomeItem({ item }) {
   );
 }
 
-export default HomeItem;
+export default React.memo(HomeItem);

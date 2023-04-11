@@ -5,6 +5,7 @@ export async function action() {
   localStorage.removeItem("movie-token");
   localStorage.removeItem("expiration");
   localStorage.removeItem("movie-name");
+  localStorage.removeItem("movie-uid");
 
   try {
     const auth = getAuth();

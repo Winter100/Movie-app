@@ -2,6 +2,7 @@ import { Form, Link, useActionData } from "react-router-dom";
 import style from "./Comment-Input.module.css";
 import { getAuthName, getAuthToken } from "../../util/auth-util";
 import { useMemo, useState } from "react";
+import React from "react";
 
 function Comment({ met }) {
   const token = getAuthToken();
@@ -49,4 +50,4 @@ function Comment({ met }) {
   );
 }
 
-export default Comment;
+export default React.memo(Comment);

@@ -44,8 +44,6 @@ export async function loader({ request }) {
 
   const popularUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=ko-KR&page=${page}`;
 
-  // await new Promise((resolve) => setTimeout(resolve, 2000)); // 2초 대기
-
   const response = await fetch(popularUrl);
 
   if (!response.ok) {

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { imgbase } from "../../util/url";
 import style from "./MovieItem.module.css";
+import React from "react";
 
 function MovieItem({ item, message = "평점" }) {
   return (
@@ -28,4 +29,4 @@ function MovieItem({ item, message = "평점" }) {
   );
 }
 
-export default MovieItem;
+export default React.memo(MovieItem);

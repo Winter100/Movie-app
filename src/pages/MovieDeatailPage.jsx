@@ -6,14 +6,15 @@ import MovieDetailItem from "../components/Movie/MovieDetail-Item";
 
 import { getAuth, getIdToken } from "firebase/auth";
 import { getDatabase, ref, push, remove } from "firebase/database";
+import { getAuthUid } from "../util/auth-util";
 
 function MovieDetailPage() {
-  const { data, comment } = useLoaderData();
+  const { data, comment, itis } = useLoaderData();
   const [isCommnet, setIsCommnet] = useState(false);
 
   return (
     <>
-      <MovieDetailItem item={data} setIsCommnet={setIsCommnet} />
+      <MovieDetailItem item={data} itis={itis} setIsCommnet={setIsCommnet} />
       {isCommnet ? (
         <>
           <CommentOutPut item={comment} met="DELETE" />
@@ -30,13 +31,28 @@ export default MovieDetailPage;
 
 export async function loader({ params }) {
   const movieId = params.id;
-
-  const URL = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=ko-KR&append_to_response=videos,images`;
-  const COMMNET_URL = `${process.env.REACT_APP_FIREBASE_URL}${movieId}/comments.json`;
+  const uid = getAuthUid();
 
   const headers = {
     "Content-Type": "application/json",
   };
+
+  const itisWish = async (uid) => {
+    if (uid) {
+      const WISH = `${process.env.REACT_APP_FIREBASE_DATABASEURL}/wishlist/${uid}/${movieId}.json`;
+      const wishResponse = await fetch(WISH, {
+        headers: headers,
+      });
+      const wishData = await wishResponse.json();
+      return wishData;
+    }
+    return null;
+  };
+
+  const itis = await itisWish(uid);
+
+  const URL = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=ko-KR&append_to_response=videos,images`;
+  const COMMNET_URL = `${process.env.REACT_APP_FIREBASE_URL}${movieId}/comments.json`;
 
   const response = await fetch(URL);
   const commentResponse = await fetch(COMMNET_URL, {
@@ -53,6 +69,7 @@ export async function loader({ params }) {
   const Data = {
     data: resData,
     comment: commnetData,
+    itis,
   };
 
   return Data;

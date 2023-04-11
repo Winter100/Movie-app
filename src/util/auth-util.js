@@ -36,6 +36,16 @@ export const getAuthName = () => {
   return name;
 };
 
+//Uid
+export const getAuthUid = () => {
+  const uid = localStorage.getItem("movie-uid");
+
+  if (!uid) {
+    return null;
+  }
+  return uid;
+};
+
 export function tokenLoader() {
   return getAuthToken();
 }

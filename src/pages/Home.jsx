@@ -1,5 +1,6 @@
 import { json, useLoaderData } from "react-router-dom";
 import HomeItem from "../components/Home/HomeItem";
+import React from "react";
 
 function HomePage() {
   const data = useLoaderData();
@@ -11,7 +12,7 @@ function HomePage() {
   );
 }
 
-export default HomePage;
+export default React.memo(HomePage);
 
 export async function loader() {
   const URL = `https://api.themoviedb.org/3/trending/movie/day?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=ko-KR`;
