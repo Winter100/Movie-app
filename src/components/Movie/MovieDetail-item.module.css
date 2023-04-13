@@ -59,6 +59,15 @@
   margin: 3%;
 }
 
+.movieDetailBtn {
+  background-color: transparent !important;
+  background-image: none !important;
+  border-color: transparent;
+  border: none;
+
+  color: #ffffff;
+}
+
 @media (max-width: 1024px) {
   .movieDetailDiv {
     width: 100%;

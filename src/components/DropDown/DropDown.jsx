@@ -16,7 +16,7 @@ function DropDown({ setDropDownMenu }) {
       <div className={style.dropDownOut}>
         <header className={style.dropDownHeader}>
           <h2>메뉴</h2>
-          {name && <span>{`환영합니다 ${name}님`}</span>}
+          {name && <span>{`${name} 님`}</span>}
         </header>
         <section className={style.dropDownsection}>
           <ul className={style.dropDownBody}>

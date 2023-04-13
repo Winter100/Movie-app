@@ -12,13 +12,10 @@ export default MyPage;
 
 export async function loader() {
   const token = getAuthToken();
+  if (!token) return redirect("/login");
 
   const auth = getAuth();
   const user = auth.currentUser;
-
-  if (!token) {
-    return redirect("/login");
-  }
 
   return user;
 }

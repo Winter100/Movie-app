@@ -76,7 +76,10 @@ function MovieDetailItem({ item, setIsCommnet, itis }) {
               <button onClick={commentEventHandler}>{"댓글"}</button>
               {token && (
                 <div>
-                  <button onClick={addWishListHandler}>
+                  <button
+                    className={style.movieDetailBtn}
+                    onClick={addWishListHandler}
+                  >
                     {iswish ? "♥" : "♡"}
                   </button>
                 </div>
