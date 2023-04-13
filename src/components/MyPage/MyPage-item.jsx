@@ -1,6 +1,7 @@
 import style from "./MyPage-item.module.css";
 import useInput from "../../hooks/use-input";
 import { Form } from "react-router-dom";
+import React, { useMemo } from "react";
 
 function MyItem({ authData }) {
   const {
@@ -16,14 +17,16 @@ function MyItem({ authData }) {
     valueIsValid: password2ValueIsValid,
   } = useInput((value) => enteredValue === value);
 
-  let btndisabled = true;
+  const btndisabled = !(passwordValueIsValid && password2ValueIsValid);
 
-  if (passwordValueIsValid === true && password2ValueIsValid === true) {
-    btndisabled = false;
-  }
-
-  const passWordClassName = passwordItIs ? style.myItempas : "";
-  const passWord2ClassName = !password2ValueIsValid ? style.myItempas : "";
+  const passWordClassName = useMemo(
+    () => (passwordItIs ? style.myItempas : ""),
+    [passwordItIs]
+  );
+  const passWord2ClassName = useMemo(
+    () => (!password2ValueIsValid ? style.myItempas : ""),
+    [password2ValueIsValid]
+  );
 
   return (
     <div className={style.myItemOut}>
@@ -95,4 +98,5 @@ function MyItem({ authData }) {
     </div>
   );
 }
-export default MyItem;
+
+export default React.memo(MyItem);

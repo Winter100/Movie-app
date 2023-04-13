@@ -1,7 +1,7 @@
 import MovieItem from "../components/Movie/MovieItem";
 import { child, get, getDatabase, ref } from "firebase/database";
 import { redirect, useLoaderData } from "react-router-dom";
-import { getAuthUid } from "../util/auth-util";
+import { getAuthToken, getAuthUid } from "../util/auth-util";
 
 function WishListPage() {
   const data = useLoaderData();
@@ -16,6 +16,9 @@ function WishListPage() {
 export default WishListPage;
 
 export async function loader() {
+  const token = getAuthToken();
+  if (!token) return redirect("/login");
+
   const uid = getAuthUid();
 
   const dbRef = ref(getDatabase());

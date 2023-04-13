@@ -46,6 +46,16 @@ export const getAuthUid = () => {
   return uid;
 };
 
+//Email
+export const getAuthEmail = () => {
+  const email = localStorage.getItem("movie-email");
+
+  if (!email) {
+    return null;
+  }
+  return email;
+};
+
 export function tokenLoader() {
   return getAuthToken();
 }

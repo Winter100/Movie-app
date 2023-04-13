@@ -16,8 +16,6 @@ function ErrorPage() {
     message = error.data.message;
   }
 
-  console.log(error);
-
   return (
     <div className={style.errorheader}>
       <LootLayout />

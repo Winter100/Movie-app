@@ -1,9 +1,15 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { imgbase } from "../../util/url";
 import style from "./MovieItem.module.css";
-import React from "react";
+import React, { useEffect } from "react";
 
 function MovieItem({ item, message = "평점" }) {
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (item.length < 1) {
+      navigate("/");
+    }
+  }, [item, navigate]);
   return (
     <div className={style.movieItemDdiv}>
       <ul className={style.movieItemUl}>
