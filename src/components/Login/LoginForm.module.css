@@ -44,4 +44,7 @@
   .auth {
     margin-top: 10%;
   }
+  .auth {
+    width: 60%;
+  }
 }

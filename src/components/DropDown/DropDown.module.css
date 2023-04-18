@@ -93,4 +93,15 @@
   .dropDownFooter ul li {
     font-size: 0.8rem;
   }
+  @media (max-width: 412px) {
+    .dropDownDiv {
+      width: 22%;
+    }
+    .dropDownFooter ul li {
+      font-size: 0.3rem;
+    }
+  }
+  .dropDownBody a.active {
+    font-size: 0.7rem;
+  }
 }
